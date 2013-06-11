@@ -13,3 +13,31 @@ For any issue, please ask on the [https://groups.google.com/group/opentelepresen
 sudo yum update
 sudo yum install make libtool autoconf subversion git wget cmake gcc gcc-c++ pkgconfig
 }}}
+
+==Building thirdparties libraries==
+
+===Building libsrtp===
+[http://srtp.sourceforge.net/srtp.html libsrtp] is optional unless you want to use WebRTC SIP clients. It’s highly recommended. The [http://conf-call.org/ WebRTC Telepresence demo client] requires a system with SRTP enabled.
+{{{
+git clone https://github.com/cisco/libsrtp/
+cd libsrtp
+CFLAGS="-fPIC" ./configure --enable-pic && make && make install
+}}}
+You should not use any libsrtp package because the latest dev version is required and building the source *by yourself is highly recommended*.
+
+===Building OpenSSL===
+[http://www.openssl.org/ OpenSSL] is required if you want to use TLS, WSS (Secure WebSocket) or DTLS-SRTP (also requires libsrtp). *OpenSSL version 1.0.1 is required if you want support for DTLS-SRTP* which is mandatory for WebRTC implementation from Mozilla (Firefox Nightly or Aurora).<br />
+This section is only required if you don’t have OpenSSL installed on your system or using version prior to 1.0.1 and want to enable DTLS-SRTP. 
+A quick way to have OpenSSL may be installing openssl-devel package but this version will most likely be outdated (prior to 1.0.1). 
+Anyways, you can check the version like this: 
+{{{ 
+openssl version 
+}}}
+To build OpenSSL:
+{{{
+wget http://www.openssl.org/source/openssl-1.0.1c.tar.gz
+tar -xvzf openssl-1.0.1c.tar.gz
+cd openssl-1.0.1c
+./config shared --prefix=/usr/local --openssldir=/usr/local/openssl && make && make install
+}}}
+If you have any error with _SSL`_CTX`_set`_tlsext`_use`_srtp when you try to run the telepresence system then, this means you have more than one openssl versions installed. This happens because the configure script detected support for DTLS-SRTP (because of the new openssl) but at runtime your linker try to load the old openssl libraries. The easiest way to fix the issue is to remove the old openssl version (look for libssl).
