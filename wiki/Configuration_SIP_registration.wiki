@@ -12,4 +12,4 @@ _Configuration 5: Enabling/disabling SIP registration_
 When the Telepresence system is behind a SIP registrar (e.g. *Asterisk*) then, this configuration entry is useless as the REGISTER requests will not be forwarded to the MCU.
 
 See also:
- * [Technical_SA_versus_AS_modes]
+ * [[Technical_SA_versus_AS_modes]]
