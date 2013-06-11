@@ -1,0 +1,15 @@
+#summary [Technical details] Security
+#labels Featured,Phase-Design
+
+This section explains how to secure both signaling and media plans.
+
+<wiki:toc max_depth="3" />
+
+=Signaling=
+Two secure signaling protocols are supported: *TLS* and *WSS*. *WSS* is WebSocket secured using *TLS*. For more information on how to enable these transport protocols using the configuration file, please refer to section 6.2. Both transports require [https://code.google.com/p/telepresence/wiki/Support_BuildingSourceCode#Building_OpenSSL OpenSSL] which have to be enabled when building the Doubango framework only. More information on how to configure the SSL certificates at section 6.3.
+
+=Media=
+Both *SRTP-SDES* ([http://tools.ietf.org/html/rfc4568 RFC 4568]) and *SRTP-DTLS* ([http://tools.ietf.org/html/rfc5763 RFC 5763], [http://tools.ietf.org/html/rfc5764 RFC 5764]) are supported. Check section 6.3 for more information on how these features have to be configured.
+
+_--This section intentionally left blank--_
+
