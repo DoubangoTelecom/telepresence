@@ -1,8 +1,6 @@
 #summary [Configuration] Video
 #labels Featured,Phase-Design
 
-Check [Configuration here] for more information on how configuration works.
-
 This section explains how to use settings related to the video.
 
 <wiki:toc max_depth="3" />
