@@ -1,0 +1,82 @@
+#summary [Configuration] Video
+#labels Featured,Phase-Design
+
+This section explains how to use settings related to the video.
+
+<wiki:toc max_depth="3" />
+
+=Bandwidth and congestion control=
+There are two kinds of video bandwidths: <u>upload</u> and <u>download</u>. 
+
+<u>Upload</u>: Bandwidth (kbps) used by the video stream (RTP + RTCP) from the MCU to a single endpoint.
+
+<u>Download</u>: Bandwidth (kbps) used by the video stream (RTP + RTCP) from the one endpoint to the MCU. This user-defined value will be forwarded to the remote endpoint using the SDP and RTCP-REMB and it’s up to this one to respect it or not. For more technical information, check [Technical_Bandwidth_management_and_congestion_control here].
+
+The configuration file allows setting the maximum upload and download bandwidths to use. If these values are undefined then, the upload bandwidth is computed following this formula:
+{{{
+video-max-upload-bandwidth (kbps) = ((video-width * video-height * video-fps * motion-rank * 0.07) / 1024)
+}}}
+For example, 720P video stream @15 frames per second with medium (2) motion rank will consume <b>1280`*`720`*`15`*`2`*`0.07 = 1935360 bps = ~1890 kbps</b> unless _video-max-upload-bandwidth_ entry is defined.
+{{{
+Congestion-ctrl-enabled = yes
+video-max-upload-bandwidth = -1 # in kbps, <=0 means undefied
+video-max-download-bandwidth = -1 # in kbps, <=0 means undefied
+video-motion-rank = 2 # 1(low), 2(medium) or 4(high)
+video-fps = 15 # [1 - 120]
+}}}
+_Configuration 12: Setting video bandwidth and congestion control_
+
+ * *Congestion-ctrl-enabled* – whether to enable [http://tools.ietf.org/html/draft-alvestrand-rtcweb-congestion-03 draft-alvestrand-rtcweb-congestion-03] and [http://tools.ietf.org/html/draft-alvestrand-rmcat-remb-01 draft-alvestrand-rmcat-remb-01]. Check [Technical_Bandwidth_management_and_congestion_control here] for more information.
+ * *video-max-upload-bandwidth* - defines the maximum bandwidth (kbps) to use for outgoing video stream (per endpoint). If congestion control is enabled then, the bandwidth will be updated based on the network conditions but these new values will never be higher than what you defined in your configuration file 
+ * *video-max-download-bandwidth* - defines the maximum bandwidth (kbps) to use for incoming video stream (per endpoint). If congestion control is enabled then, the bandwidth will be updated based on the network conditions but these new values will never be higher than what you defined in your configuration file
+ * *video-motion-rank* - defines the video type. Supported values: <u>1</u> (low, e.g. home video security systems), <u>2</u> (medium, e.g conference call) or <u>3</u> (high, e.g. basketball game).
+ * *video-fps* - defines the video framerate for the mixed stream regardless the input fps. Supported values: <u>`[`1 – 120`]`</u>.
+
+ # To check available bandwidth: [http://www.speedtest.net/ http://www.speedtest.net/]
+ # To check bandwidth usage: [http://linux.die.net/man/8/iftop iftop].
+
+=Output mixed size=
+The output (MCU → endpoints) mixed video size is independent of the input sizes (from the endpoints). *video-mixed-size* configuration entry is used to set the preferred value. 
+
+Accepted values are: 
+ * sqcif(128x98)
+ * qcif(176x144)
+ * qvga(320x240)
+ * cif(352x288)
+ * hvga(480x320)
+ * vga(640x480)
+ * 4cif(704x576)
+ * svga(800x600)
+ * 480p(852x480)
+ * 720p(1280x720)
+ * 16cif(1408x1152)
+ * 1080p(1920x1080)
+ * 2160p(3840x2160)
+If no value is defined then, the mixed video size is assumed to be equal to <u>vga</u> (640x480).
+<u>720p</u>, <u>1080p</u> and <u>2160p</u> are commonly named HD, Full HD and Ultra HD.
+{{{
+video-mixed-size = vga
+}}}
+_Configuration 13: Setting output mixed video size_
+
+In this beta version, it’s not allowed to set arbitrary values because of backward compatibility. The final version will probably allow this.
+
+=Jitter Buffer=
+*video-jb-enabled* configuration entry is used to enable or disable video jitter buffer. It's highly recommended to enable video jitter buffer because it's required to have RTCP-FB (NACK, FIR, PLI... as per [http://tools.ietf.org/html/rfc5104 RFC 5104]) fully functional. Enabling video jitter buffer gives better quality and improves smoothness. For example, no RTCP-NACK messages will be sent to request dropped RTP packets if this option is disabled. It’s also up to the jitter buffer to reorder RTP packets.
+For more technical information, check [Technical_Video_quality#Jitter_buffer here].
+{{{
+video-jb-enabled = yes # no to disable
+}}}
+_Configuration 14: Enabling or disabling video jitter buffer_
+
+=Zero-artifacts=
+It’s up to the MCU to decode all video streams from the endpoints, mix them before sending the result. If RTP packets are lost on one stream then, artifacts will be introduced on the mixed frame (result). Enabling zero-artifact feature fix this issue. There are some requirements on the endpoints to have this feature fully functional.
+For more technical information, check [Technical_Video_quality#Zero-artifacts here].
+{{{
+video-zeroartifacts-enabled = yes # no to disable
+}}}
+_Configuration 15: Enabling or disabling zero-artifact_
+
+=Mixing type=
+
+_--This section intentionally left blank--_
