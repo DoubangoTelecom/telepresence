@@ -1,8 +1,6 @@
 #summary [Configuration] Bridge configuration
 #labels Featured,Phase-Design
 
-Check [Configuration here] for more information on how configuration works.
-
 In this beta version, global configuration entries are ignored when reused with a <b>`[`bridge`]`</b> section. For example, setting the audio sample rate at global scoop applies to all bridges but redefining it for a [bridge] section will be ignored. In the release version, it will be possible to override almost any configuration entry.
 It’s not required to add a bridge in order to be able to make conference calls.
 You can add as many <b>`[`bridge`]`</b> sections as you want.
