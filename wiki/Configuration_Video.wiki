@@ -80,3 +80,38 @@ _Configuration 15: Enabling or disabling zero-artifact_
 =Mixing type=
 
 _--This section intentionally left blank--_
+
+=Overlays=
+The configuration file allows managing the overlays (font size and type, position, watermark…).
+{{{
+overlay-fonts-folder-path = ./fonts/truetype/freefont
+overlay-copyright-text = Doubango Telecom
+overlay-copyright-fontsize = 12
+# full path: ./fonts/truetype/freefont/FreeSerif.ttf
+overlay-copyright-fontfile = FreeSerif.ttf
+overlay-speaker-name-enabled = yes
+overlay-speaker-name-fontsize = 16
+# full path: ./fonts/truetype/freefont/FreeMonoBold.ttf
+overlay-speaker-name-fontfile = FreeMonoBold.ttf
+overlay-speaker-jobtitle-enabled = yes
+overlay-watermark-image-path = ./images/logo35x34.jpg
+}}}
+_Configuration 16: Video overlays_
+
+ * *overlay-fonts-folder-path* - defines the base folder path where to look for the font types. The default fonts come from [ftp://ftp.gnu.org/pub/gnu/freefont ftp://ftp.gnu.org/pub/gnu/freefont]. For more fonts (not free), we recommend [http://www.dafont.com/ http://www.dafont.com/].
+ * *overlay-copyright-text* - defines the copyright text to display on the mixed video. Comment the line to disable this feature.
+ * *overlay-copyright-fontsize* - defines the font size to use to draw the copyright text.
+ * *overlay-copyright-fontfile* - defines the font file to use to draw the copyright text on the mixed video. The full path to the TruType file will be ‘overlay-fonts-folder-path+"/"+overlay-copyright-fontfile’.
+ * *overlay-speaker-name-enabled* - whether to draw the speaker's name on the mixed video.
+ * *overlay-speaker-name-fontsize* - defines the font size to use to draw the speaker's name (and job title) on the mixed video.
+ * *overlay-speaker-name-fontfile* - defines the font file to use to draw the speaker's name on the mixed video. The full path to the TruType file will be ‘overlay-fonts-folder-path+"/"+overlay-speaker-name-fontfile’.
+ * *overlay-speaker-jobtitle-enabled* - whether to draw the speaker's job title on the mixed video.
+ * *overlay-watermark-image-path* - defines the full path to the image to use to watermark the mixed video. Comment the line to disable this feature.
+
+For more technical information, check [Technical_Video_mixer_design#Overlays here].
+
+To test test the overlays we highly recommended using the [http://conf-call.org/ WebRTC Telepresence client].
+
+=Patterns=
+
+_--This section intentionally left blank--_
