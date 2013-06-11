@@ -13,6 +13,8 @@ Both transports require [https://code.google.com/p/telepresence/wiki/Support_Bui
 More information on how to configure the SSL certificates could be found [Configuration_Security here].
 
 =Media=
-Both *SRTP-SDES* ([http://tools.ietf.org/html/rfc4568 RFC 4568]) and *SRTP-DTLS* ([http://tools.ietf.org/html/rfc5763 RFC 5763], [http://tools.ietf.org/html/rfc5764 RFC 5764]) are supported. Check [Configuration_Security here] for more information on how these features have to be configured.
+Both *SRTP-SDES* ([http://tools.ietf.org/html/rfc4568 RFC 4568]) and *SRTP-DTLS* ([http://tools.ietf.org/html/rfc5763 RFC 5763], [http://tools.ietf.org/html/rfc5764 RFC 5764]) are supported. 
+
+Check [Configuration_Security here] for more information on how these features have to be configured.
 
 _--This section intentionally left blank--_
