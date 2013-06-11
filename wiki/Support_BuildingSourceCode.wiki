@@ -1,0 +1,7 @@
+#summary [Support] Building Source code
+
+This is the most important part as it’s where you’ll decide which features to support/enable. The Telepresence system use Doubango VoIP Framework (requires SVN r901 or later) and it’s highly recommended to rebuild it if you already have an old version installed because of some new and required features. This section explains how to build the product on CentOS64 but could be easily adapted for any Linux, Windows (MinGW) or OS X (MacPorts).
+
+For any issue, please ask on the telepresence developer group.
+
+<wiki:toc max_depth="3" />
