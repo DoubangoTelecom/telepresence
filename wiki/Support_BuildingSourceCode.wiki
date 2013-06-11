@@ -1,4 +1,5 @@
 #summary [Support] Building Source code
+#labels Featured,Phase-Support,Phase-Design
 
 This is the most important part as it’s where you’ll decide which features to support/enable. The Telepresence system use [https://code.google.com/p/doubango/ Doubango VoIP Framework] (requires *SVN r901 or later*) and it’s highly recommended to rebuild it if you already have an old version installed because of some new and required features. 
 
@@ -253,6 +254,4 @@ make samples
 ===Testing===
 We highly recommend using our [http://conf-call.org/ WebRTC SIP telepresence client] to test the system.
 For more information on how to test the system: ....
-
-
 
