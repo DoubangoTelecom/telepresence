@@ -40,4 +40,104 @@ tar -xvzf openssl-1.0.1c.tar.gz
 cd openssl-1.0.1c
 ./config shared --prefix=/usr/local --openssldir=/usr/local/openssl && make && make install
 }}}
-If you have any error with _SSL`_CTX`_set`_tlsext`_use`_srtp when you try to run the telepresence system then, this means you have more than one openssl versions installed. This happens because the configure script detected support for DTLS-SRTP (because of the new openssl) but at runtime your linker try to load the old openssl libraries. The easiest way to fix the issue is to remove the old openssl version (look for libssl).
+
+===Building libogg, libvorbis and libtheora==
+These libraries are optional unless you want to use *.webm* or *.mkv* containers.
+You can install the devel packages (*recommended*):
+{{{
+sudo yum install libogg-devel libvorbis-devel libtheora-devel
+}}}
+Or build the source code by yourself:
+{{{
+--This section intentionally left blank--
+}}}
+
+===Building libspeex and libspeexdsp===
+[http://www.speex.org/ libspeex] (audio codec) is optional but [http://www.speex.org/ libspeexdsp] (audio resampler, jitter buffer…) is required. 
+You can install the devel packages:
+{{{
+sudo yum install speex-devel
+}}}
+Or build the source by yourself:
+{{{
+wget http://downloads.xiph.org/releases/speex/speex-1.2beta3.tar.gz
+tar -xvzf speex-1.2beta3.tar.gz
+cd speex-1.2beta3
+./configure --disable-oggtest --without-libogg && make && make install
+}}}
+
+===Building YASM===
+[http://yasm.tortall.net/ YASM] is only required if you want to enable and build *VPX* (VP8 video codec) or *x264* (H.264 codec). It’s highly recommended.
+{{{
+wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz
+tar -xvzf yasm-1.2.0.tar.gz
+cd yasm-1.2.0
+./configure && make && make install
+}}}
+
+===Building libvpx===
+[http://www.webmproject.org/code/ libvpx] adds support for [http://en.wikipedia.org/wiki/VP8 VP8] and is optional but highly recommended if you want support for video when using Google Chrome or Mozilla Firefox. libvpx is required if you want to use *.webm* container or our [http://conf-call.org/ WebRTC SIP Telepresence client].
+You can install the devel packages:
+{{{
+sudo yum install libvpx-devel
+}}}
+Or build the source by yourself:
+{{{
+git clone http://git.chromium.org/webm/libvpx.git
+cd libvpx
+./configure --enable-realtime-only --enable-error-concealment --disable-examples --enable-vp8 --enable-pic --enable-shared --as=yasm
+make && make install
+}}}
+
+===Building opencore-amr===
+[http://sourceforge.net/projects/opencore-amr/ opencore-amr] is optional. Adds support for AMR audio codec.
+{{{
+git clone git://opencore-amr.git.sourceforge.net/gitroot/opencore-amr/opencore-amr
+autoreconf --install && ./configure && make && make install
+}}}
+
+===Building libopus===
+[http://www.opus-codec.org/ libopus] is optional but highly recommended as it’s an MTI codec for [http://www.webrtc.org/ WebRTC]. Adds support for Opus audio codec.
+{{{
+wget http://downloads.xiph.org/releases/opus/opus-1.0.2.tar.gz
+tar -xvzf opus-1.0.2.tar.gz
+cd opus-1.0.2
+./configure --with-pic --enable-float-approx && make && make install
+}}}
+
+===Building libgsm===
+[http://en.wikipedia.org/wiki/Full_Rate libgsm] is optional. Adds support for [http://en.wikipedia.org/wiki/Full_Rate GSM] audio codec.
+You can install the devel packages (*recommended*):
+{{{
+sudo yum install gsm-devel
+}}}
+Or build the source by yourself:
+{{{
+wget http://www.quut.com/gsm/gsm-1.0.13.tar.gz
+tar -xvzf gsm-1.0.13.tar.gz
+cd gsm-1.0-pl13 && make && make install
+#cp -rf ./inc/* /usr/local/include
+#cp -rf ./lib/* /usr/local/lib
+}}}
+
+===Building g729===
+[http://en.wikipedia.org/wiki/G.729 G729] is optional. Adds support for G.729 audio codec.
+{{{
+svn co http://g729.googlecode.com/svn/trunk/ g729b
+cd g729b
+./autogen.sh && ./configure --enable-static --disable-shared && make && make install
+}}}
+
+===Building iLBC===
+[http://en.wikipedia.org/wiki/Internet_Low_Bitrate_Codec iLBC] is optional. Adds support for iLBC audio codec.
+{{{
+svn co http://doubango.googlecode.com/svn/branches/2.0/doubango/thirdparties/scripts/ilbc
+cd ilbc
+wget http://www.ietf.org/rfc/rfc3951.txt
+awk -f extract.awk rfc3951.txt
+./autogen.sh && ./configure
+make && make install
+}}}
+
+
+
