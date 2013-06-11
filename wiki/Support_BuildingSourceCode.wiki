@@ -1,8 +1,15 @@
 #summary [Support] Building Source code
 
-This is the most important part as it’s where you’ll decide which features to support/enable. The Telepresence system use Doubango VoIP Framework (requires SVN r901 or later) and it’s highly recommended to rebuild it if you already have an old version installed because of some new and required features. 
-This section explains how to build the product on CentOS64 but could be easily adapted for any Linux, Windows (MinGW) or OS X (MacPorts).
+This is the most important part as it’s where you’ll decide which features to support/enable. The Telepresence system use [https://code.google.com/p/doubango/ Doubango VoIP Framework] (requires *SVN r901 or later*) and it’s highly recommended to rebuild it if you already have an old version installed because of some new and required features. 
 
-For any issue, please ask on the telepresence developer group.
+This section explains how to build the product on *CentOS64* but could be easily adapted for any Linux, Windows ([http://www.mingw.org/ MinGW]) or OS X ([http://www.macports.org/ MacPorts]).
+
+For any issue, please ask on the [https://groups.google.com/group/opentelepresence telepresence developer group].
 
 <wiki:toc max_depth="3" />
+
+== Preparing the system==
+{{{
+sudo yum update
+sudo yum install make libtool autoconf subversion git wget cmake gcc gcc-c++ pkgconfig
+}}}
