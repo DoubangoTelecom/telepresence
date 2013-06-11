@@ -253,5 +253,4 @@ make samples
 
 ===Testing===
 We highly recommend using our [http://conf-call.org/ WebRTC SIP telepresence client] to test the system.
-For more information on how to test the system: ....
-
+For more information on how to test the system: click [Support_Testing_the_system here]
