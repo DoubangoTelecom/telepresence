@@ -9,7 +9,7 @@ The video mixing and scaling is completely managed using FFmpeg. In this beta ve
 To minimize CPU utilization, all endpoints with the same video codec use the same encoder but different decoders. For example, if you have 7 endpoints using VP8 codec then, the MCU will have 1 encoder and 7 decoders. Using a single encoder gives better CPU performances but more bandwidth than what’s needed because if one endpoint requests an IDR then, the prediction chain is restarted for all other peers.
 
 =Overlays=
-The overlays are configured as per section 6.11.6.
+The overlays are configured as explained [Configuration_Video#Overlays here].
 
 The mixed video contains many overlays displayed using [http://www.ffmpeg.org/ffmpeg-filters.html FFmpeg filters]. There are two kinds of overlays: texts and images. The text overlays use [http://www.ffmpeg.org/ffmpeg-filters.html#drawtext-1 drawtext filter] which requires [https://code.google.com/p/telepresence/wiki/Support_BuildingSourceCode#Building_libfreetype libfreetype] to be enabled when building FFmpeg. The image overlays (watermarks) use [http://www.ffmpeg.org/ffmpeg-filters.html#movie-1 movie filter] and accept any PNG or JPEG file as input. JPEG images are natively supported by FFmpeg (thanks to MPEG4) while PNG requires [http://zlib.net/ zlib] to be enabled.
 
