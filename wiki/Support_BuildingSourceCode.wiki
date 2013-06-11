@@ -139,5 +139,120 @@ awk -f extract.awk rfc3951.txt
 make && make install
 }}}
 
+===Building x264===
+[http://www.videolan.org/developers/x264.html x264] is optional but highly recommended and adds support for H.264 video codec (requires FFmpeg). [http://www.videolan.org/developers/x264.html x264] is required if you want to use *.mp4* container.
+{{{
+wget ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2
+tar -xvjf last_x264.tar.bz2
+# the output directory may be difference depending on the version and date
+cd x264-snapshot-20121201-2245
+./configure --enable-static --enable-pic && make && make install
+}}}
+
+===Building libfreetype===
+[http://www.freetype.org/ libfreetype] is *required* and used for video overlays.
+You can install the devel packages (*recommended*):
+{{{
+sudo yum install freetype-devel
+}}}
+Or build the source by yourself:
+{{{
+wget http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.bz2
+tar -xvjf freetype-2.4.12.tar.bz2
+cd freetype-2.4.12
+./configure && make && make install
+}}}
+
+===Building libfaac===
+[http://www.audiocoding.com/faac.html libfaac] is optional unless you want support for [http://en.wikipedia.org/wiki/Advanced_Audio_Coding AAC] audio codec or *.mp4* container for recording.
+{{{
+wget http://downloads.sourceforge.net/faac/faac-1.28.tar.bz2
+tar -xvjf faac-1.28.tar.bz2
+cd faac-1.28 && ./configure && make && make install
+}}}
+_Note: building the tests could fails but you can safely ignore it._
+
+===Building FFmpeg===
+[http://www.ffmpeg.org/ FFmpeg] is *required* even if you don’t want support for video.
+{{{
+# [1] checkout source code
+git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
+cd ffmpeg
+
+# [2] grap a release branch
+git checkout n1.2
+
+# [3] configure source
+./configure \
+--extra-cflags="-fPIC" \
+--extra-ldflags="-lpthread" \
+\
+--enable-pic --enable-memalign-hack --enable-pthreads \
+--enable-shared --disable-static \
+--disable-network --enable-pthreads \
+--disable-ffmpeg --disable-ffplay --disable-ffserver --disable-ffprobe \
+\
+--enable-gpl \
+\
+--disable-debug \
+\
+--enable-libfreetype \
+\
+--enable-libfaac \
+\
+--enable-nonfree
+# [4] build and install
+make && make install
+}}}
+Remove _"--enable-nonfree"_ and _"--enable-libfaac"_ if you don’t want support for [http://en.wikipedia.org/wiki/Advanced_Audio_Coding AAC] audio codec.
+
+===Building OpenAL Soft===
+[http://kcat.strangesoft.net/openal.html OpenAL Soft] is optional. Adds support for Stereoscopic (spatial) 3D audio.
+{{{
+git clone git://repo.or.cz/openal-soft.git
+cd openal-soft/build
+cmake ..
+make && make install
+}}}
+
+===Building Doubango===
+[https://code.google.com/p/doubango/ Doubango VoIP framework 2.0] *SVN r901 or later is required*.
+{{{
+svn checkout http://doubango.googlecode.com/svn/branches/2.0/doubango doubango
+cd doubango && ./autogen.sh && ./configure --with-speexdsp --with-ffmpeg
+make && make install
+}}}
+Only few options are used to configure the source code and force enabling mandatory libraries. Any optional library is automatically detected. For example, use _"--with-opus"_ to force using Opus audio codec or _"--without-opus"_ to avoid automatic detection. You can also specify a path where to search for a library (e.g. _"--with-opus=/usr/local"_).
+Use _"configure --help"_ for more information on supported options.
+
+==Building the Telepresence system==
+
+===Getting the source code===
+During the beta phase, the only way to get the source code is via the [https://groups.google.com/group/opentelepresence telepresence developer group]. The first post (pinned and always appear first) contains the source code and new versions will be posted there until the end of the beta phase.
+
+===Building the source code===
+{{{
+# svn checkout http://telepresence.googlecode.com/svn/trunk/ telepresence
+cd telepresence 
+# [1] get tinywrap external source (must be named ‘tinywrap’)
+svn checkout http://doubango.googlecode.com/svn/branches/2.0/doubango/bindings/_common tinywrap
+# [2] configure, build and install
+./autogen.sh && ./configure
+make && make install
+}}}
+
+If no prefix is defined then the binaries will be installed to */usr/local/sbin*.
+
+
+===Installing the configuration and fonts files===
+This is only required for first-time installations and *will override any existing configuration file*.
+{{{
+make samples
+}}}
+
+===Testing===
+We highly recommend using our [http://conf-call.org/ WebRTC SIP telepresence client] to test the system.
+For more information on how to test the system: ....
+
 
 
