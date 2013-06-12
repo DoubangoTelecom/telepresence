@@ -19,7 +19,7 @@ sudo yum install make libtool autoconf subversion git wget cmake gcc gcc-c++ pkg
 
 ===Required libraries===
  * Always: [Support_BuildingSourceCode#Building_libspeex_and_libspeexdsp libspeexdsp], [Support_BuildingSourceCode#Building_FFmpeg FFmpeg] and [Support_BuildingSourceCode#Building_Doubango Doubango]
- * For WebRTC clients: [Support_BuildingSourceCode#Building_libspeex_and_libspeexdsp libspeexdsp], [Support_BuildingSourceCode#Building_libsrtp libsrtp], [Support_BuildingSourceCode#Building_libvpx libvpx], [Support_BuildingSourceCode#Building_OpenSSL OpenSSL 1.0.1+](Firefox only), [Support_BuildingSourceCode#Building_FFmpeg FFmpeg] and [Support_BuildingSourceCode#Building_Doubango Doubango]
+ * For [http://conf-call.org/ WebRTC clients]: [Support_BuildingSourceCode#Building_libspeex_and_libspeexdsp libspeexdsp], [Support_BuildingSourceCode#Building_libsrtp libsrtp], [Support_BuildingSourceCode#Building_libvpx libvpx], [Support_BuildingSourceCode#Building_OpenSSL OpenSSL 1.0.1+](Firefox only), [Support_BuildingSourceCode#Building_FFmpeg FFmpeg] and [Support_BuildingSourceCode#Building_Doubango Doubango]
 
 ===Building libsrtp===
 [http://srtp.sourceforge.net/srtp.html libsrtp] is optional unless you want to use WebRTC SIP clients. It’s highly recommended. The [http://conf-call.org/ WebRTC Telepresence demo client] requires a system with SRTP enabled.
