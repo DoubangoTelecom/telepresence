@@ -54,7 +54,7 @@ Or build the source code by yourself:
 }}}
 
 ===Building libspeex and libspeexdsp===
-[http://www.speex.org/ libspeex] (audio codec) is optional but [http://www.speex.org/ libspeexdsp] (audio resampler, jitter buffer…) is required. 
+[http://www.speex.org/ libspeex] (audio codec) is optional but [http://www.speex.org/ libspeexdsp] (audio resampler, jitter buffer…) is *required*. 
 You can install the devel packages:
 {{{
 sudo yum install speex-devel
