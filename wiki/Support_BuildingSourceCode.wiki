@@ -215,8 +215,9 @@ Remove _"--enable-nonfree"_ and _"--enable-libfaac"_ if you don’t want support
 ===Building OpenAL Soft===
 [http://kcat.strangesoft.net/openal.html OpenAL Soft] is optional. Adds support for Stereoscopic (spatial) 3D audio.
 {{{
-git clone git://repo.or.cz/openal-soft.git
-cd openal-soft/build
+wget http://kcat.strangesoft.net/openal-releases/openal-soft-1.15.1.tar.bz2
+tar -xvjf openal-soft-1.15.1.tar.bz2
+cd openal-soft-1.15.1/build
 cmake ..
 make && make install
 }}}
