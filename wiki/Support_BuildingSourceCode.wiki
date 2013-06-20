@@ -46,6 +46,7 @@ tar -xvzf openssl-1.0.1c.tar.gz
 cd openssl-1.0.1c
 ./config shared --prefix=/usr/local --openssldir=/usr/local/openssl && make && make install
 }}}
+Some known issues when you have more than one openssl libraries installed is discussed at [https://groups.google.com/forum/#!topic/opentelepresence/JctxtEyW-dg https://groups.google.com/forum/#!topic/opentelepresence/JctxtEyW-dg].
 
 ===Building libogg, libvorbis and libtheora==
 These libraries are optional unless you want to use *.webm* or *.mkv* containers.
