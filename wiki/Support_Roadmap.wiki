@@ -1,0 +1,12 @@
+#summary [Support] Roadmap
+#labels Featured,Phase-Support,Phase-Design
+
+ # Fix [Support_Known_issues known issues]
+ # Adds support for more video layouts/patterns (Only Hangout-like pattern is supported for now)
+ # Adds support for live slides sharing (or any other format)
+ # Adds support for desktop sharing
+ # Adds support for whiteboard
+ # Allows setting bridge manager
+ # Adds support for keepAlive (SIP OPTIONS)
+ # Allows interconnection with Skype, Lync, Cisco....
+ # JSON API to get information on the call (participants, statues, positions, volume level...) and manage the bridge (invite user, mute participant, kick off...).
