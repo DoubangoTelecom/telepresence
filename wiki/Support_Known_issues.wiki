@@ -1,0 +1,8 @@
+#summary [Support] Known issues
+#labels Featured,Phase-Support,Phase-Design
+
+This is a short list with all *known issues* (to be fixed before the end of the beta phase).
+ # The audio quality on the recorded files is not as good as we expect. This looks like an issue on the PTS and DTS.
+ # Mixed video looks stretched when the SIP clients is a mobile in portrait (e.g. iDoubs and IMSDroid). No issue when device is in landscape or using our WebRTC demo client. 
+ # The algorithm to detect the current speaker and listeners is buggy.
+ # 3D (spatial) mixed audio quality is not as good as we expect.
