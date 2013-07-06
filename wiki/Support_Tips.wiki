@@ -20,3 +20,30 @@ Enable 2D audio mixing instead of 3D.
 
 ===1.5 Lower mixed video size and fps===
 If you have a weak CPU then, consider using a reasonable video size (e.g. VGA) and fps ([15 - 30]).
+
+===1.5 Multi-threading and ASM===
+Make sure to enable [Support_BuildingSourceCode#Building_YASM YASM] and pthread when building [Support_BuildingSourceCode#Building_FFmpeg FFmpeg], [Support_BuildingSourceCode#Building_x264 x264] and [Support_BuildingSourceCode#Building_libvpx VP8].
+
+==2. Lowering bandwidth==
+ * 	Use "slow" motion rank (see [Configuration_Video#Bandwidth_and_congestion_control here])
+ *	Use small mixed video size (see [Configuration_Video#Output_mixed_size here])
+ *	Set the maximum upload and download bandwidth (see [Configuration_Video#Bandwidth_and_congestion_control here])
+ *	Use small video frame rate (see [Configuration_Video#Bandwidth_and_congestion_control here])
+
+*tip:* To test your available bandwidth, we recommend http://www.speedtest.net/. <br />
+*tip:* To check bandwidth usage, we recommend iftop.
+
+==3. Improving audio quality==
+ *	Use [Support_BuildingSourceCode#Building_libopus Opus] (or G.722) audio codec if supported by the SIP clients (see [Configuration_Audio_Video_codecs here]).
+ *	Avoid audio up-sampling and down-sampling (see [Technical_Audio_mixer_design here]).
+ *	If the [Technical_Audio_mixer_design "pivot settings"] use a sample rate (SR) equal to S then, try to use codecs with a SR equal to "S << n" or "S >> n".
+
+==4. Improving video quality==
+ * Use Google Chrome as SIP client (check our WebRTC demo client at [http://conf-call.org/ http://conf-call.org/]).
+ * Enable "Zero-Artifacts" feature (see [Technical_Video_quality#Zero-artifacts here] and [Configuration_Video#Zero-artifacts here])
+ * Use a client supporting something close to 16/9 video size to avoid stretching issues
+ * Avoid video up-sampling and down-sampling
+
+==5. Lowering recorded video file size==
+
+_--This section intentionally left blank--_
