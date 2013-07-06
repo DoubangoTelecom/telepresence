@@ -6,14 +6,14 @@
 ==1. Lowering CPU==
 ===1.1 Avoid audio resampling===
 To avoid audio resampling, the SIP clients connecting to a bridge have to use a codec with the sample rate, channels and bits per sample as the [Technical_Audio_mixer_design "pivot settings"]. For more information, check section [Technical_Audio_mixer_design here]. <br />
-*tip:* In you configuration file, enable codecs with same settings as the pivot.
+<u>*tip:*</u> In you configuration file, enable codecs with same settings as the pivot.
 
 ===1.2 Only record sessions if needed===
 Do not enable recording if it’s not important to you or use `*`.avi container which consume less CPU than `*`.mp4 (because of AAC encoder from [Support_BuildingSourceCode#Building_libfaac libfaac]).
 
 ===1.3 Use common video codec===
 All SIP clients with the same video codec will share a single encoder. Try to use common video codec for all clients. For example, if you have two clients, A and B, with A supporting both H.264 and VP8 and B only H.264 then, you should make sure that A will offer H.264 with highest priority. For more information, check [Technical_Video_mixer_design#Encoders_and_decoders here]. <br />
-*tip:* In your configuration file, enable a single video codec if you cannot control the SIP clients.
+<u>*tip:*</u> In your configuration file, enable a single video codec if you cannot control the SIP clients.
 
 ===1.4 Use 2d audio mixing===
 Enable 2D audio mixing instead of 3D.
@@ -30,8 +30,8 @@ Make sure to enable [Support_BuildingSourceCode#Building_YASM YASM] and pthread 
  *	Set the maximum upload and download bandwidth (see [Configuration_Video#Bandwidth_and_congestion_control here])
  *	Use small video frame rate (see [Configuration_Video#Bandwidth_and_congestion_control here])
 
-*tip:* To test your available bandwidth, we recommend http://www.speedtest.net/. <br />
-*tip:* To check bandwidth usage, we recommend iftop.
+<u>*tip:*</u> To test your available bandwidth, we recommend http://www.speedtest.net/. <br />
+<u>*tip:*</u> To check bandwidth usage, we recommend iftop.
 
 ==3. Improving audio quality==
  *	Use [Support_BuildingSourceCode#Building_libopus Opus] (or G.722) audio codec if supported by the SIP clients (see [Configuration_Audio_Video_codecs here]).
