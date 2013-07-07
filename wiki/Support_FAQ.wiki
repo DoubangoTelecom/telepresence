@@ -1,0 +1,14 @@
+#summary [Support] FAQ
+#labels Featured,Phase-Support,Phase-Design
+
+<wiki:toc max_depth="2" />
+
+== Address already in use ==
+On some Linux distributions, when you try to quickly restart the server then, you can get an error message saying _"the address is already in use"_ even if the process is not active. This happens when the TCP socket enter in *FIN_WAIT* state and pending to be closed by the system. *This is not a bug in TelePresence* -we know what _SO_REUSEADDR_ option means ;)-.<br />
+To force the system to close the socket immediately instead of waiting for the timeout to raise (few seconds) you can do the following:
+{{{
+tcpkill -i eth0 port XXXX
+# where XXXX is the port to close
+# To close port 20060: tcpkill -i eth0 port 20060
+# By default TelePresence listens on port 20060 for both UDP and WS transports.
+}}}
