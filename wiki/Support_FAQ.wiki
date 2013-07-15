@@ -3,6 +3,24 @@
 
 <wiki:toc max_depth="2" />
 
+== How to report issue? ==
+We receive tens of messages on our dev-groups and private mails every day. Without a commercial license, we only provide a best-effort support on [http://groups.google.com/group/opentelepresence opentelepresence group]. <br /> *We're happy to help you to fix your issues* but we'll not spend hours on them to understand what's wrong. If you want help, you *must*:
+ * Provide clear technical description of the issue.
+ * Change you _telepresence.cfg_ to use INFO debug level. See [Configuration_Debugging_the_system here] for more information.
+ * Attach the logs to the message.
+ * Provide information about the SVN revisions (both Doubango and TelePresence).
+If the report is about building issues:
+ * Attach config.log files for both Doubango and TelePresence
+you _should_ also:
+ * Provide the client logs.
+
+== I see "Remote party requesting DTLS-DTLS (UDP/TLS/RTP/SAVPF) but this option is not enabled". How can I fix this ==
+DTLS-SRTP is required by some WebRTC implementations (e.g. Firefox). You <b>MUST</b>:
+ # use a new OpenSSL version with support for DTLS-SRTP as explained [Support_BuildingSourceCode#Building_OpenSSL here]. Linux almost always comes with OpenSSL pre-installed which means building and installing OpenSSL by yourself will most likely duplicate it.
+ # make sure you don't have more than one OpenSSL version installed (look for libssl).
+ # rebuild TelePresence and make sure the "CONGRATULATIONS" message says that you have DTLS-SRTP enabled.
+ # make sure you're using SSL certificates in your configuration (see [Configuration_Security here] for more information). DTLS-SRTP requires at least a valid Public Key (could be self signed).
+
 == Address already in use ==
 On some Linux distributions, when you try to quickly restart the server then, you can get an error message saying _"the address is already in use"_ even if the process is not active. This happens when the TCP socket enter in *FIN_WAIT* state and pending to be closed by the system. *This is not a bug in TelePresence* -we know what _SO_REUSEADDR_ option means ;)-.<br />
 To force the system to close the socket immediately instead of waiting for the timeout to raise (few seconds) you can do the following:
