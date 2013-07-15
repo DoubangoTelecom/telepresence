@@ -4,7 +4,7 @@
 <wiki:toc max_depth="2" />
 
 == How to report issue? ==
-We receive tens of messages on our dev-groups and private mails every day. Without a commercial license, we only provide a best-effort support on [http://groups.google.com/group/opentelepresence opentelepresence group]. <br /> *We're happy to help you to fix your issues* but we'll not spend hours on them to understand what's wrong. If you want help, you *must*:
+We receive tens of messages on our dev-groups and private mailboxes every day. Without a commercial license, we only provide a best-effort support on [http://groups.google.com/group/opentelepresence opentelepresence group]. <br /> *We're happy to help you to fix your issues* but we'll not spend hours on them to understand what's wrong. If you want help, you *must*:
  * Provide clear technical description of the issue.
  * Change you _telepresence.cfg_ to use INFO debug level. See [Configuration_Debugging_the_system here] for more information.
  * Attach the logs to the message.
