@@ -15,6 +15,9 @@ you _should_ also:
  * Provide the network (Wireshark) capture at the server-side
  * Provide the client logs.
 
+==How to create self-signed SSL certificate?==
+We'd recommend reading [https://groups.google.com/forum/#!topic/doubango/asAfP5ZCgdI this thread].
+
 == I see "Remote party requesting DTLS-DTLS (UDP/TLS/RTP/SAVPF) but this option is not enabled". How can I fix this ==
 DTLS-SRTP is required by some WebRTC implementations (e.g. Firefox). You <b>MUST</b>:
  # use a new OpenSSL version with support for DTLS-SRTP as explained [Support_BuildingSourceCode#Building_OpenSSL here]. Linux almost always comes with OpenSSL pre-installed which means building and installing OpenSSL by yourself will most likely duplicate it.
