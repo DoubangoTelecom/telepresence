@@ -1,7 +1,7 @@
 #summary [Configuration] Security
 #labels Featured,Phase-Design
 
-The configuration file allows setting the SSL certificate files to be used for TLS and WSS signaling protocols. The certificates are also used for DTLS-SRTP. The Doubango framework must be built with [https://code.google.com/p/telepresence/wiki/Support_BuildingSourceCode#Building_OpenSSL OpenSSL] enabled as explained in section 5.11.
+The configuration file allows setting the SSL certificate files to be used for TLS and WSS signaling protocols. The certificates are also used for DTLS-SRTP. The Doubango framework must be built with [https://code.google.com/p/telepresence/wiki/Support_BuildingSourceCode#Building_OpenSSL OpenSSL] enabled as explained [Support_BuildingSourceCode#Building_OpenSSL here].
 {{{
 ssl-private-key = /tmp/ssl.pem
 ssl-public-key = /tmp/ssl.pem
