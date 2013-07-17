@@ -12,7 +12,7 @@ _Configuration 3: Setting SSL certificates_
 
  * *ssl-private-key* - the full path to the PEM file.
  * *ssl-public-key* - the full path to the PEM file.
- * *ssl-public-key* - the full path to the PEM file.
+ * *ssl-ca* - the full path to the PEM file.
  * *ssl-mutual-auth* - whether the incoming connection requests must fail if the remote peer certificates are missing or do not match the local ones. This only applies to *TLS* or *WSS* and is useless for *DTLS-SRTP* as certificates are always required.
 
 The configuration file also allows setting the _SRTP_ type.
