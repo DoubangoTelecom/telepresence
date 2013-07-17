@@ -22,7 +22,7 @@ srtp-type = sdes;dtls
 }}}
 _Configuration 4: SRTP settings_
 
-*srtp-mode* – defines the SRTP mode to use for negotiation. Supported values are none, optional and mandatory. Only optional and mandatory modes will work if the SIP client is a WebRTC browser as SRTP is required.
+*srtp-mode* – defines the SRTP mode to use for negotiation. Supported values are <u>none</u>, <u>optional</u> and <u>mandatory</u>. Only optional and mandatory modes will work if the SIP client is a WebRTC browser as SRTP is required.
 Based on the mode, the SDP on the outgoing INVITEs will be formed like this:
  *	<u>none</u>: 
   *	profile will be equal to _RTP/AVP_ 
