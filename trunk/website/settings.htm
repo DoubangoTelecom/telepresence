@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>telePresence &middot; settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="doubango, VoIP, HTML5, WebRTC, RTCWeb, SIP, IMS, videoconference, Full HD, Ultra UD, telepresence, Video chat, VP8 " />
+    <meta name="description" content="Doubango open source SIP TelePresence System">
+    <meta name="author" content="Doubango Telecom">
+    <!-- Le styles -->
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body
+        {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="./assets/ico/favicon.png">
+
+    <script type="text/javascript">
+        window.onload = function () {
+            tp_btn_save.disabled = !window.localStorage;
+            tp_btn_revert.disabled = !window.localStorage;
+
+            settingsRevert(true);
+        }
+
+        function settingsSave() {
+            window.localStorage.setItem('org.doubango.tp.config.display_name', tp_txt_displayname.value);
+            window.localStorage.setItem('org.doubango.tp.config.impi', tp_txt_impi.value);
+            window.localStorage.setItem('org.doubango.tp.config.job_title', tp_txt_job_title.value);
+            window.localStorage.setItem('org.doubango.tp.config.audio_velocity', tp_txt_audio_velocity.value);
+            window.localStorage.setItem('org.doubango.tp.config.audio_position', tp_txt_audio_position.value);
+            window.localStorage.setItem('org.doubango.tp.config.websocket_server_url', tp_txt_ws_url.value);
+            window.localStorage.setItem('org.doubango.tp.config.realm', tp_txt_realm.value);
+
+            txt_label_info.innerHTML = '<i>Saved</i>';
+        }
+
+        function settingsRevert(bNotUserAction) {
+            if(window.localStorage){
+                tp_txt_displayname.value = (window.localStorage.getItem('org.doubango.tp.config.display_name') || null);
+                tp_txt_impi.value = (window.localStorage.getItem('org.doubango.tp.config.impi') || null);
+                tp_txt_job_title.value = (window.localStorage.getItem('org.doubango.tp.config.job_title') || null);
+                tp_txt_audio_velocity.value = (window.localStorage.getItem('org.doubango.tp.config.audio_velocity') || null);
+                tp_txt_audio_position.value = (window.localStorage.getItem('org.doubango.tp.config.audio_position') || null);
+                tp_txt_ws_url.value = (window.localStorage.getItem('org.doubango.tp.config.websocket_server_url') || null);
+                tp_txt_realm.value = (window.localStorage.getItem('org.doubango.tp.config.realm') || null);
+            }
+
+            if (!bNotUserAction) {
+                txt_label_info.innerHTML = '<i>Reverted</i>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                    </span>
+                </button>
+                <a class="brand" href="./index.html">WebRTC SIP TelePresence client</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><a target=_blank href="https://code.google.com/p/telepresence/">source code</a></li>
+                        <li><a target="_blank" href="./technical-guide.pdf?svn=1">technical guide</a></li>
+                        <li class="active"><a href="#">settings</a></li>
+                        <li><a href="./contact.htm">contact</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <div class="container" style='border: 0px solid #000;' >
+           <label align="left" id="txt_label_info"> </label>
+        <div class="span7 well" style="display:table">
+            <hr />
+            <h5>Network information</h5>
+            <hr />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_ws_url" style="display:table-cell; width:1px">WebSocket&nbsp;URL<sup>*</sup>:&nbsp;</label>
+                <input type="text" id="tp_txt_ws_url" style="display:table-cell; width:100%; height: 100%" placeholder="ws://192.168.0.37:20060" />
+            </div>
+            <br />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_realm" style="display:table-cell; width:1px">Domain&nbsp;Name:&nbsp;</label>
+                <input type="text" id="tp_txt_realm" style="display:table-cell; width:100%; height: 100%" placeholder="conf-call.org" />
+            </div>
+            <hr />
+            <h5>Personal information</h5>
+            <hr />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_impi" style="display:table-cell; width:1px">Private&nbsp;Identity:&nbsp;</label>
+                <input type="text" id="tp_txt_impi" style="display:table-cell; width:100%; height: 100%" placeholder="johndoe" />
+            </div>
+            <br />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_displayname" style="display:table-cell; width:1px">Display&nbsp;Name:&nbsp;</label>
+                <input type="text" id="tp_txt_displayname" style="display:table-cell; width:100%; height: 100%" placeholder="John Doe" />
+            </div>
+            <br />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_job_title" style="display:table-cell; width:1px">Job&nbsp;Title:&nbsp;</label>
+                <input type="text" id="tp_txt_job_title" style="display:table-cell; width:100%; height: 100%" placeholder="Technology Evangelist" />
+            </div>
+            <hr />
+            <h5>Stereoscopic 3D audio</h5>
+            <hr />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_audio_velocity" style="display:table-cell; width:1px">Velocity:&nbsp;</label>
+                <input type="text" id="tp_txt_audio_velocity" style="display:table-cell; width:100%; height: 100%" placeholder="[0.0f, 0.0f, 0.0f]" />
+            </div>
+            <br />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_audio_position" style="display:table-cell; width:1px">Position:&nbsp;</label>
+                <input type="text" id="tp_txt_audio_position" style="display:table-cell; width:100%; height: 100%" placeholder="[0.0f, 0.0f, 0.0f]" />
+            </div>
+            <br />
+            <br />
+            <div style="width:100%;" align="center">
+                <input type="button" class="btn btn-success" id="tp_btn_save" value="save" onclick='settingsSave();' />
+                &nbsp;
+                <input type="button" class="btn btn-danger" id="tp_btn_revert" value="revert" onclick='settingsRevert();' />
+           </div>
+         </div>
+    </div><!-- container -->
+    <hr />
+    <footer>
+        <p>
+            &copy; <a href="http://doubango.org/" target=_blank>Doubango Telecom 2013</a></p>
+        <i>Inspiring the future</i>
+    </footer>
+</body>
+</html>

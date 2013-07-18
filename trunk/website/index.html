@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>TelePresence &middot; the open source SIP TelePresence client (WebRTC)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="doubango, VoIP, HTML5, WebRTC, RTCWeb, SIP, IMS, videoconference, Full HD, Ultra UD, telepresence, Video chat, VP8 " />
+    <meta name="description" content="Doubango open source SIP TelePresence System">
+    <meta name="author" content="Doubango Telecom">
+    <!-- Le styles -->
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body
+        {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+        html, body
+        {
+            height: 100%;
+        }
+    </style>
+    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="./assets/ico/favicon.png">
+    <script type="text/javascript">
+        tp = { debug: false };
+        tp.config =
+        {
+            realm: 'conf-call.org',
+            impi: 'johndoe',
+            display_name: 'John Doe',
+            job_title: 'Technology Evangelist',
+            websocket_proxy_url: 'ws://192.168.0.37:20060',
+            organization: 'Doubango Telecom',
+            audio_velocity: '[0.0f, 0.0f, 0.0f]',
+            audio_position: '[0.0f, 0.0f, 0.0f]',
+            sip_outbound_proxy_url: null
+        };
+        tp.started = false;
+        tp.callSession = null;
+
+        tp.init = function () {
+            tsk_utils_log_info('[TELEPRESENCE] tp.init()');
+
+            tp.audio_remote = document.createElement('audio');
+            tp.audio_remote.autoplay = "autoplay";
+            tp.audio_ringbacktone = document.createElement('audio');
+            tp.audio_ringbacktone.src = "./sounds/ringbacktone.wav";
+            tp.audio_ringbacktone.loop = true;
+
+            tp.div_glass = document.getElementById('tp_div_glass');
+            tp.button_call = document.getElementById('tp_btn_call');
+
+            tp.button_call.onclick = function () {
+                if (tsk_string_is_null_or_empty(tp_txt_bridge_id.value)) {
+                    tp_txt_status.innerHTML = 'Bridge identifier must not be empty';
+                    return;
+                }
+
+                // save bridge info
+                window.localStorage.setItem('org.doubango.tp.config.bridge_id', tp_txt_bridge_id.value);
+                window.localStorage.setItem('org.doubango.tp.config.bridge_pin', tp_txt_bridge_pin.value);
+
+                if (!tp.stack) {
+                    var display_name = (window.localStorage.getItem('org.doubango.tp.config.display_name') || tp.config.display_name);
+                    var realm = (window.localStorage.getItem('org.doubango.tp.config.realm') || tp.config.realm);
+                    var impi = (window.localStorage.getItem('org.doubango.tp.config.impi') || tp.config.impi);
+                    var websocket_proxy_url = (window.localStorage.getItem('org.doubango.tp.config.websocket_server_url') || tp.config.websocket_proxy_url);
+                    var sip_outbound_proxy_url = (window.localStorage.getItem('org.doubango.tp.config.sip_outboundproxy_url') || tp.config.sip_outbound_proxy_url);
+
+                    //if(tsk_string_is_null_or_empty(websocket_proxy_url)){
+                    //tp_txt_status.innerHTML = 'Bridge identifier must not be empty';
+                    //}
+
+                    tsk_utils_log_info('[TELEPRESENCE] realm=['+realm+'], impi=['+impi+']'+'ws_url=['+websocket_proxy_url+']');
+
+                    tp.stack = new SIPml.Stack({ realm: realm, impi: impi, impu: 'sip:' + impi + '@' + realm, password: 'mysecret',
+                        events_listener: { events: '*', listener: function (e) {
+                            tsk_utils_log_info('[TELEPRESENCE] stack event = ' + e.type);
+
+                            switch (e.type) {
+                                case 'starting':
+                                    {
+                                        tp_txt_status.innerHTML = 'connecting to mcu...';
+                                        break;
+                                    }
+                                case 'started':
+                                    {
+                                        tp_txt_status.innerHTML = 'connected';
+                                        tp.started = true;
+                                        tp.call();
+                                        break;
+                                    }
+                                case 'stopped':
+                                case 'stopping':
+                                    {
+                                        tp.callSession = null;
+                                        tp.audio_ringbacktone.pause();
+                                        tp.started = false;
+                                        tp_txt_status.innerHTML = (e.type === 'stopped') ? 'disconnected' : 'disconnecting...';
+                                        tp_div_call_options.style.visibility = 'hidden';
+                                        tp_video_local.style.opacity = tp_video_remote.style.opacity = 0;
+                                        tp.fullscreen(false);
+                                        if(e.type === 'stopped'){
+                                            tp.button_call.value = 'join';
+                                            tp.callSession = null;
+                                            tp.stack = null;
+                                        }
+                                        break;
+                                    }
+                                case 'failed_to_start':
+                                    {
+                                        tp_txt_status.innerHTML = 'failed to connect';
+                                        break;
+                                    }
+                                case 'm_permission_requested':
+                                    {
+                                        tp.div_glass.style.visibility = 'visible';
+                                        break;
+                                    }
+                                case 'm_permission_accepted':
+                                case 'm_permission_refused':
+                                    {
+                                        tp.div_glass.style.visibility = 'hidden';
+                                        break;
+                                    }
+                                    break;
+                            } //switch
+                        } //callback
+                        }, //events_listener
+                        display_name: display_name,
+                        enable_rtcweb_breaker: false,
+                        enable_click2call: false,
+                        websocket_proxy_url: websocket_proxy_url,
+                        outbound_proxy_url: sip_outbound_proxy_url
+                    }/*stack-config*/);
+                }
+                if (!tp.started) {
+                    tp.stack.start();
+                }
+                else {
+                    tp.call();
+                }
+            };
+
+            document.body.appendChild(tp.audio_remote);
+
+            SIPml.init(
+                        function (e) { // successCallback
+                            tp.button_call.disabled = false;
+                            document.body.style.cursor = 'default';
+                        },
+                        function (e) { // errorCallback
+                            tp.button_call.disabled = true;
+                            tp_txt_status.innerHTML = e.description;
+                            document.body.style.cursor = 'default';
+                        }
+                    );
+        }
+
+        tp.fullscreen = function (start) {
+            if (tp_video_remote.webkitSupportsFullscreen) {
+                if (start) {
+                    tp_video_remote.webkitEnterFullScreen();
+                }
+                else {
+                    tp_video_remote.webkitExitFullscreen();
+                }
+            }
+        }
+
+        tp.call = function () {
+            tsk_utils_log_info('[TELEPRESENCE] tp.call()');
+
+            if (!tp.stack) {
+                // link-address hack
+                tp.button_call.click();
+                return;
+            }
+
+            if (tp.callSession) {
+                tp.callSession.hangup();
+                return;
+            }
+
+            var display_name = (window.localStorage.getItem('org.doubango.tp.config.display_name') || tp.config.display_name);
+            var realm = (window.localStorage.getItem('org.doubango.tp.config.realm') || tp.config.realm);
+            var impi = (window.localStorage.getItem('org.doubango.tp.config.impi') || tp.config.impi);
+            var job_title = (window.localStorage.getItem('org.doubango.tp.config.job_title') || tp.config.job_title);
+            var audio_velocity = (window.localStorage.getItem('org.doubango.tp.config.audio_velocity') || tp.config.audio_velocity);
+            var audio_position = (window.localStorage.getItem('org.doubango.tp.config.audio_position') || tp.config.audio_position);
+
+            var from = /*"sip:" + impi + "@" + realm*/null;
+            // var from = '\"'+display_name+'\"<sip:'+impi+'@'+realm+'>'
+            var to = tp_txt_bridge_id.value;
+
+            tp.stack.setConfiguration({
+                display_name: display_name
+                // more new values here
+            });
+
+            tsk_utils_log_info('[TELEPRESENCE] making call from [' + from + '] to [' + to + ']...');
+
+            var call_listener = function (e) {
+                tsk_utils_log_info('[TELEPRESENCE] session event = ' + e.type);
+                switch (e.type) {
+                    case 'connecting': case 'connected':
+                        {
+                            if (e.session == tp.callSession) {
+                                tp_txt_status.innerHTML = (e.type === 'connected') ? 'in call' : 'joining...';
+                                tp.button_call.value = 'hang up';
+                            }
+                            break;
+                        }
+                    case 'i_ao_request':
+                        {
+                            if (e.session == tp.callSession) {
+                                var code = e.getSipResponseCode();
+                                if (code == 180 || code == 183) {
+                                    tp.audio_ringbacktone.play();
+                                    tp_txt_status.innerHTML = 'ringing...';
+                                }
+                            }
+                            break;
+                        }
+                    case 'm_early_media':
+                        {
+                            if (e.session == tp.callSession) {
+                                tp.audio_ringbacktone.pause();
+                                tp_txt_status.innerHTML = 'early media...';
+                            }
+                            break;
+                        }
+                    case 'm_stream_video_local_added':
+                    case 'm_stream_video_local_removed':
+                    case 'm_stream_video_remote_added':
+                    case 'm_stream_video_remote_removed':
+                        {
+                            if (e.session == tp.callSession) {
+                                if (e.type === 'm_stream_video_local_added') tp_video_local.style.opacity = 1;
+                                else if (e.type === 'm_stream_video_local_removed') tp_video_local.style.opacity = 0;
+                                else if (e.type === 'm_stream_video_remote_added') { tp_video_remote.style.opacity = 1; tp_div_call_options.style.visibility = 'visible'; }
+                                else if (e.type === 'm_stream_video_remote_removed') { tp_video_remote.style.opacity = 0; tp.fullscreen(false); }
+                            }
+                            break;
+                        }
+                    case 'terminating': case 'terminated':
+                        {
+                            if (e.session == tp.callSession) {
+                                tp_txt_status.innerHTML = e.description.toLowerCase();
+                                tp.button_call.value = 'join';
+                                tp.callSession = null;
+                                tp.audio_ringbacktone.pause();
+                                tp.div_glass.style.visibility = 'hidden';
+                                tp_div_call_options.style.visibility = 'hidden';
+                                tp_video_local.style.opacity = tp_video_remote.style.opacity = 0;
+                                tp.fullscreen(false);
+                                window.setTimeout(function () { tp_txt_status.innerHTML = ''; }, 2000);
+                            }
+                            break;
+                        }
+                }
+            };
+
+
+            tp.callSession = tp.stack.newSession('call-audiovideo', {
+                from: from,
+                audio_remote: tp.audio_remote,
+                video_local: /* tp_video_local */null,
+                video_remote: tp_video_remote,
+                events_listener: { events: '*', listener: call_listener },
+                sip_caps: [
+                                        { name: '+g.oma.sip-im' },
+                                        { name: '+sip.ice' },
+                                        { name: 'language', value: '\"en,fr\"' }
+                                    ],
+                sip_headers: [
+                        {name: 'TP-JobTitle', value: job_title, session: true}, 
+                        {name: 'TP-BridgePin', value: tp_txt_bridge_pin.value, session: true},
+                        {name: 'TP-AudioPosition', value: audio_position, session: true},
+                        {name: 'TP-AudioVelocity', value: audio_velocity, session: true},
+                        {name: 'Organization', value: tp.config.organization, session: true}
+                ]
+            });
+            tp.callSession.call(to);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            tp_txt_bridge_id.value = (window.localStorage.getItem('org.doubango.tp.config.bridge_id') || '');
+            tp_txt_bridge_pin.value = (window.localStorage.getItem('org.doubango.tp.config.bridge_pin') || '');
+
+            tp.init();
+        });
+
+        window.onload = function () {
+        }
+    </script>
+</head>
+<body style="cursor: wait">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                    </span>
+                </button>
+                <a class="brand" href="#">WebRTC SIP TelePresence client</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><a target=_blank href="https://code.google.com/p/telepresence/">source code</a></li>
+                        <li><a target="_blank" href="./technical-guide.pdf?svn=1">technical guide</a></li>
+                        <li><a target="_blank" href="./settings.htm">settings</a></li>
+                        <li><a target="_blank" href="./contact.htm">contact</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <div class="container" style='border: 0px solid #000; width: 95%; height: 80%'>
+        <table id='tp_table_1' style='border: 0px solid #000; width: 100%; height: 100%;'>
+        <tr>
+            <td style='border: 0px solid #000; width: 20%;' align='center' valign='top'>
+                    <table id='tp_table_2'>
+                        <tr>
+                            <td><!--img alt='logo' src="assets/img/tp-logo.jpg" /--><img alt='logo' src="assets/img/webrtc-logo.png" /><hr /></td>
+                        </tr>
+                        <tr>
+                            <td style="white-space: nowrap;" align='center'>
+                                <label style="width: 100%;" align="center" id="tp_txt_status">
+                                    --</label>
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="white-space: nowrap;" align='center'>
+                                <input type="text" style="width: 100%; height: 100%; font-size:12px" id="tp_txt_bridge_id" value=""
+                                    title="Bridge identifier (required)" placeholder="Bridge identifier (required)" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" style="white-space: nowrap;" align='center'>
+                                <input type="text" style="width: 100%; height: 100%; font-size:12px" id="tp_txt_bridge_pin" value=""
+                                    title="Bridge 4-digits pin code (optional)" placeholder="Bridge 4-digits pin code (optional)" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" align='center'>
+                                <input type="button" class="btn btn-success" style="" id="tp_btn_call" value="join"
+                                    disabled /><hr />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id='tp_td_call_options' colspan="1" align='center'>
+                                <div id="tp_div_call_options" style='visibility: hidden; border: 0px solid #000; width: 100%; height: 100%'>
+                                    <input type="button" class="btn btn-secondary" style="" id="tp_btn_hold_resume" value="hold" disabled />&nbsp;&nbsp;
+                                    <input type="button" class="btn btn-secondary" style="" id="tp_btn_fullscreen" value="full screen" onclick='tp.fullscreen(true);' />
+                                    </div>
+                            </td>
+                        </tr>
+                    </table>  <!-- table_2-->              
+            </td>
+            <td style='border: 0px solid #000; width: 80%; height: 100%;'>
+                <table id='tp_table_3' style='border: 0px solid #000; width: 100%; height: 100%;'>
+                    <tr style='border: 0px solid #000; width: 100%; height: 100%'>
+                        <td id="tp_td_video" colspan="1" style='border: 0px solid #000; width: 100%; height: 100%'>
+                            <div id="tp_div_video" style='border: 0px solid #000; width: 100%; height: 100%'>
+                                <div id="divVideoRemote" style='border: 0px solid #000; height: 100%; width: 100%'>
+                                    <video class="video" width="100%" height="100%" id="tp_video_remote" autoplay="autoplay"
+                                        style="opacity: 0; background-color: #ffffff; -webkit-transition-property: opacity;
+                                        -webkit-transition-duration: 2s;">
+                                    </video>
+                                </div>
+                                <div id="tp_div_video_local" style='border: 0px solid #000'>
+                                    <video class="video" width="88px" height="72px" id="tp_video_local" autoplay="autoplay"
+                                        muted="true" style="opacity: 0; margin-top: -80px; margin-left: 5px; background-color: #ffffff;
+                                        -webkit-transition-property: opacity; -webkit-transition-duration: 2s;">
+                                    </video>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table> <!-- table_3 -->
+            </td>
+        </tr>
+        </table> <!-- table_1 -->
+    </div>
+    <!-- container -->
+    <hr />
+    <footer>
+        <p>
+            &copy; <a href="http://doubango.org/" target=_blank>Doubango Telecom 2013</a></p>
+        <i>Inspiring the future</i>
+    </footer>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- SIPML5 -->
+    <script src="./SIPml-api.js?svn=200" type="text/javascript"> </script>
+    <!-- ANALYTICS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-6868621-28', 'conf-call.org');
+      ga('send', 'pageview');
+
+    </script>
+    <div id='tp_div_glass' style='visibility: hidden; z-index: 99; position: fixed; width: 100%;
+        height: 100%; margin: 0; padding: 0; top: 0; left: 0; opacity: 0.8; background-color: Gray'>
+    </div>
+</body>
+</html>
