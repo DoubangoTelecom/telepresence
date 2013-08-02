@@ -10,3 +10,4 @@
  # Adds support for keepAlive (SIP OPTIONS)
  # Allows interconnection with Skype, Lync, Cisco....
  # JSON API to get information on the call (participants, statues, positions, volume level...) and manage the bridge (invite user, mute participant, kick off...).
+ # Add a beep sound when new participant join
