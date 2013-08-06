@@ -100,7 +100,7 @@ make && make install
 [http://sourceforge.net/projects/opencore-amr/ opencore-amr] is optional. Adds support for AMR audio codec.
 {{{
 git clone git://opencore-amr.git.sourceforge.net/gitroot/opencore-amr/opencore-amr
-autoreconf --install && ./configure && make && make install
+cd opencore-amr && autoreconf --install && ./configure && make && make install
 }}}
 
 ===Building libopus===
