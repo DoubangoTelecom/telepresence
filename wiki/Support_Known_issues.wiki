@@ -7,3 +7,4 @@ This is a short list with all *known issues* (to be fixed before the end of the 
  # Mixed video looks stretched when the SIP clients is a mobile in portrait (e.g. iDoubs and IMSDroid). No issue when device is in landscape or using our WebRTC demo client. 
  # The algorithm to detect the current speaker and listeners is buggy.
  # 3D (spatial) mixed audio quality is not as good as we expect.
+ # Mixer fails to negotiate H.263
