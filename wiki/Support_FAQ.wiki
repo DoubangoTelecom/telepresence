@@ -22,7 +22,7 @@ We'd recommend reading [https://groups.google.com/forum/#!topic/doubango/asAfP5Z
 When a program is started the loader search for all dependencies (shared libraries) in a predefined list of folders. You're getting this error because the folder containing _XXX.so.y_ is not in the list. To fix the issue, run:
 {{{
 # /!\IMPORTANT: change <path-to-XXX.so.y>
-echo "<path-to-XXX.so.y>" > /etc/ld.so.conf.d/telepresence.conf
+echo "<path-to-XXX.so.y>" >> /etc/ld.so.conf.d/telepresence.conf
 ldconfig
 }}}
 To find _<path-to-XXX.so.y>_:
