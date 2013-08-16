@@ -18,6 +18,19 @@ you _should_ also:
 ==How to create self-signed SSL certificates?==
 We'd recommend reading [https://groups.google.com/forum/#!topic/doubango/asAfP5ZCgdI this thread].
 
+== I see "error while loading shared libraries: XXX.so.y: cannot open shared object file: No such file or directory" when I run the server. How can I fix this? ==
+When a program is started the loader search for all dependencies (shared libraries) in a predefined list of folders. You're getting this error because the folder containing _XXX.so.y_ is not in the list. To fix the issue, run:
+{{{
+# /!\IMPORTANT: change <path-to-XXX.so.y>
+echo "<path-to-XXX.so.y>" > /etc/ld.so.conf.d/telepresence.conf
+ldconfig
+}}}
+To find _<path-to-XXX.so.y>_:
+{{{
+find / -name 'XXX.so.y'
+}}}
+
+
 == I see "Remote party requesting DTLS-DTLS (UDP/TLS/RTP/SAVPF) but this option is not enabled". How can I fix this ==
 DTLS-SRTP is required by some WebRTC implementations (e.g. Firefox). You <b>MUST</b>:
  # use a new OpenSSL version with support for DTLS-SRTP as explained [Support_BuildingSourceCode#Building_OpenSSL here]. Linux almost always comes with OpenSSL pre-installed which means building and installing OpenSSL by yourself will most likely duplicate it.
