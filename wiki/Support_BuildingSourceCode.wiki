@@ -212,7 +212,7 @@ git checkout n1.2
 make && make install
 }}}
  * Remove _"--enable-nonfree"_ and _"--enable-libfaac"_ if you don’t want support for [http://en.wikipedia.org/wiki/Advanced_Audio_Coding AAC] audio codec.
- * Add --enable-libx264 for force building with support for H.264.
+ * Add _--enable-libx264_ for force building with support for H.264.
 
 ===Building OpenAL Soft===
 [http://kcat.strangesoft.net/openal.html OpenAL Soft] is optional. Adds support for Stereoscopic (spatial) 3D audio.
