@@ -1,13 +1,13 @@
 #summary [Support] Building Source code
 #labels Featured,Phase-Support,Phase-Design
 
-This is the most important part as it’s where you’ll decide which features to support/enable. The Telepresence system use [https://code.google.com/p/doubango/ Doubango VoIP Framework] (requires *SVN r901 or later*) and it’s highly recommended to rebuild it if you already have an old version installed because of some new and required features. 
+This is the most important part as it’s where you’ll decide which features to support/enable. The Telepresence system use [https://code.google.com/p/doubango/ Doubango VoIP Framework] (requires *SVN r989 or later*) and it’s highly recommended to rebuild it if you already have an old version installed because of some new and required features. 
 
 This section explains how to build the product on *CentOS64* but could be easily adapted for any Linux, Windows ([http://www.mingw.org/ MinGW]) or OS X ([http://www.macports.org/ MacPorts]).
 
 For any issue, please ask on the [https://groups.google.com/group/opentelepresence telepresence developer group].
 
-<wiki:toc max_depth="3" />
+<wiki:toc max_depth="4" />
 
 == Preparing the system==
 {{{
@@ -211,7 +211,8 @@ git checkout n1.2
 # [4] build and install
 make && make install
 }}}
-Remove _"--enable-nonfree"_ and _"--enable-libfaac"_ if you don’t want support for [http://en.wikipedia.org/wiki/Advanced_Audio_Coding AAC] audio codec.
+ * Remove _"--enable-nonfree"_ and _"--enable-libfaac"_ if you don’t want support for [http://en.wikipedia.org/wiki/Advanced_Audio_Coding AAC] audio codec.
+ * Add --enable-libx264 for force building with support for H.264.
 
 ===Building OpenAL Soft===
 [http://kcat.strangesoft.net/openal.html OpenAL Soft] is optional. Adds support for Stereoscopic (spatial) 3D audio.
@@ -223,8 +224,45 @@ cmake ..
 make && make install
 }}}
 
+===Building openOffice===
+
+[http://www.openoffice.org/ OpenOffice] (or [https://www.libreoffice.org/ LibreOffice]) are optional and add support for presentation sharing. For information about this feature, check section ~5.14~. *Version 4.0 or later is required*. Both the application and SDK are required.<br />
+This section explain how to install (building would take hours) [http://www.openoffice.org/ OpenOffice]. [https://www.libreoffice.org/ LibreOffice] could also be used but not recommended (not fully tested).<br />
+*<u>IMPORTANT:</u>* These instructions are for *Linux x86-64* and you must change the paths if you’re using a 32-bit system. Run _uname -m_ to get your CPU type. All rpms could be found at [http://www.openoffice.org/download/other.html].
+{{{
+## Application (x64) ##
+wget http://sourceforge.net/projects/openofficeorg.mirror/files/4.0.0/binaries/en-US/Apache_OpenOffice_4.0.0_Linux_x86-64_install-rpm_en-US.tar.gz
+mkdir -p OpenOfficeApplication && tar -zxvf Apache_OpenOffice_4.0.0_Linux_x86-64_install-rpm_en-US.tar.gz -C OpenOfficeApplication
+rpm -Uvih OpenOfficeApplication/en-US/RPMS/*rpm
+}}}
+{{{
+## SDK (x64) ##
+wget http://sourceforge.net/projects/openofficeorg.mirror/files/4.0.0/binaries/SDK/Apache_OpenOffice-SDK_4.0.0_Linux_x86-64_install-rpm_en-US.tar.gz
+mkdir -p OpenOfficeSDK && tar -zxvf Apache_OpenOffice-SDK_4.0.0_Linux_x86-64_install-rpm_en-US.tar.gz -C OpenOfficeSDK
+rpm -Uvih OpenOfficeSDK/en-US/RPMS/*rpm
+}}}
+Both OpenOffice application and SDK should be installed into */opt/openoffice4*. If not, you’ll need to edit the script used to prepare the SDK headers.<br />
+Prepare the SDK headers:
+{{{
+LD_LIBRARY_PATH=/opt/openoffice4/program:/opt/openoffice4/sdk/lib /opt/openoffice4/sdk/bin/cppumaker -BUCR -O /opt/openoffice4/sdk/includecpp /opt/openoffice4/program/types.rdb
+}}}
+Please note that the destination folder must be named *includecpp*. <br />
+Install java runtime (*required*):
+{{{
+yum install java-1.7.0-openjdk
+}}}
+
+====Notes====
+Installing OpenOffice application will not add the binary (*soffice*) in your *$PATH* environment variable. The TelePresence system will try to start the program in the background using a relative path unless you have changed *presentation-sharing-app* configuration entry. You can change your *$PATH* environment variable to avoid editing *presentation-sharing-app* but this is not recommend if you’re testing different OpenOffice versions. It’s also highly recommended to append the folder containing the binary *AFTER $PATH*. Appending the folder before *$PATH* will force using shared libraries (e.g. libssl, libcurl…) installed with OpenOffice instead of yours.<br />
+<u>Correct:</u> {{{export PATH=$PATH:/opt/openoffice4/program}}}<br />
+<u>*NOT* correct:</u> {{{export PATH=/opt/openoffice4/program: $PATH}}}
+
+====Known Issues====
+_"/usr/bin/ld: skipping incompatible /opt/openoffice4/sdk/lib/libuno_sal.so when searching for -luno_sal"_: CPU type mismatch (e.g. installed 64-bit libraries on 32-bit OS).
+
+
 ===Building Doubango===
-[https://code.google.com/p/doubango/ Doubango VoIP framework 2.0] *SVN r901 or later is required*.
+[https://code.google.com/p/doubango/ Doubango VoIP framework 2.0] *SVN r989 or later is required*.
 {{{
 svn checkout http://doubango.googlecode.com/svn/branches/2.0/doubango doubango
 cd doubango && ./autogen.sh && ./configure --with-speexdsp --with-ffmpeg
@@ -235,21 +273,14 @@ Use _"configure --help"_ for more information on supported options.
 
 ==Building the Telepresence system==
 
-===Getting the source code===
-During the beta phase, the only way to get the source code is via the [https://groups.google.com/group/opentelepresence telepresence developer group]. The first post (pinned and always appear first) contains the source code and new versions will be posted there until the end of the beta phase.
-
-===Building the source code===
 {{{
-# svn checkout http://telepresence.googlecode.com/svn/trunk/ telepresence
-cd telepresence 
-# [1] get tinywrap external source (must be named ‘tinywrap’)
-svn checkout http://doubango.googlecode.com/svn/branches/2.0/doubango/bindings/_common tinywrap
-# [2] configure, build and install
+svn checkout https://telepresence.googlecode.com/svn/trunk/ telepresence
+cd telepresence
 ./autogen.sh && ./configure
 make && make install
 }}}
 
-If no prefix is defined then the binaries will be installed to */usr/local/sbin*.
+If no prefix is defined then, the binaries will be installed into */usr/local/sbin*.
 
 
 ===Installing the configuration and fonts files===
