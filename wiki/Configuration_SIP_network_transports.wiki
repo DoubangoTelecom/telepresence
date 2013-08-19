@@ -1,7 +1,7 @@
 #summary [Configuration] Network transports
 #labels Featured,Phase-Requirements
 
-The system support many network transports for the SIP signaling protocol and presentation sharing. The network connections are declared using *transport* configuration entries.
+The system support many network transports for the SIP signaling protocol and content sharing. The network connections are declared using *transport* configuration entries.
 {{{
 transport = udp;*;20060;*
 transport = ws;*;20060;4
