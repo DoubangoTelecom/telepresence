@@ -35,7 +35,7 @@ _Configuration 12: Setting video bandwidth and congestion control_
  # To check available bandwidth: [http://www.speedtest.net/ http://www.speedtest.net/]
  # To check bandwidth usage: [http://linux.die.net/man/8/iftop iftop].
 
-=Output mixed size=
+=Output size, pixel aspect ratio and letterboxing=
 The output (MCU → endpoints) mixed video size is independent of the input sizes (from the endpoints). *video-mixed-size* configuration entry is used to set the preferred value. 
 
 Accepted values are: 
