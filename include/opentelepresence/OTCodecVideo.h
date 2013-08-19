@@ -1,0 +1,7 @@
+#ifndef OPENTELEPRESENCE_CODECVIDEO_H
+#define OPENTELEPRESENCE_CODECVIDEO_H
+
+#include "OpenTelepresenceConfig.h"
+
+
+#endif /* OPENTELEPRESENCE_CODECVIDEO_H */

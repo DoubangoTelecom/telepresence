@@ -18,6 +18,11 @@
         {
             height: 100%;
         }
+        .div-options 
+        {
+            z-index: 100;
+            position: fixed;
+        }
     </style>
     <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -39,13 +44,38 @@
             display_name: 'John Doe',
             job_title: 'Technology Evangelist',
             websocket_proxy_url: 'ws://192.168.0.37:20060',
+            http_server_url: 'http://192.168.0.37:20065',
             organization: 'Doubango Telecom',
             audio_velocity: '[0.0f, 0.0f, 0.0f]',
             audio_position: '[0.0f, 0.0f, 0.0f]',
-            sip_outbound_proxy_url: null
+            sip_outbound_proxy_url: null,
+            bandwidth: { audio:undefined, video:undefined },
+            video_size: { minWidth:undefined, minHeight:undefined, maxWidth:undefined, maxHeight:undefined },
+            ice_servers: null,
+            mute: false
+        };
+        tp.presentation =
+        {
+            sharing: false,
+            name: "unknown.ppt",
+            page_index: 0,
+            page_count: 0
         };
         tp.started = false;
         tp.callSession = null;
+
+        tp.config_get_impi = function(){ return (window.localStorage.getItem('org.doubango.tp.config.impi') || tp.config.impi); }
+        tp.config_get_display_name = function(){ return (window.localStorage.getItem('org.doubango.tp.config.display_name') || tp.config.display_name); }
+        tp.config_get_realm = function(){ return (window.localStorage.getItem('org.doubango.tp.config.realm') || tp.config.realm); }
+        tp.config_get_job_title = function(){ return (window.localStorage.getItem('org.doubango.tp.config.job_title') || tp.config.job_title); }
+        tp.config_get_audio_velocity = function(){ return (window.localStorage.getItem('org.doubango.tp.config.audio_velocity') || tp.config.audio_velocity); }
+        tp.config_get_audio_position = function(){ return (window.localStorage.getItem('org.doubango.tp.config.audio_position') || tp.config.audio_position); }
+        tp.config_get_websocket_proxy_url = function(){ return (window.localStorage.getItem('org.doubango.tp.config.websocket_server_url') || tp.config.websocket_proxy_url); }
+        tp.config_get_sip_outbound_proxy_url = function(){ return (window.localStorage.getItem('org.doubango.tp.config.sip_outboundproxy_url') || tp.config.sip_outbound_proxy_url); }
+        tp.config_get_http_server_url = function(){ return (window.localStorage.getItem('org.doubango.tp.config.http_server_url') || tp.config.http_server_url); }
+        tp.config_get_bandwidth = function(){ return (tsk_string_to_object(window.localStorage.getItem('org.doubango.tp.config.bandwidth')) || tp.config.bandwidth); }
+        tp.config_get_video_size = function(){ return (tsk_string_to_object(window.localStorage.getItem('org.doubango.tp.config.video_size')) || tp.config.video_size); }
+        tp.config_get_ice_servers = function(){ return (tsk_string_to_object(window.localStorage.getItem('org.doubango.tp.config.ice_servers')) || tp.config.ice_servers); }
 
         tp.init = function () {
             tsk_utils_log_info('[TELEPRESENCE] tp.init()');
@@ -61,7 +91,7 @@
 
             tp.button_call.onclick = function () {
                 if (tsk_string_is_null_or_empty(tp_txt_bridge_id.value)) {
-                    tp_txt_status.innerHTML = 'Bridge identifier must not be empty';
+                    tp_lbl_status.innerHTML = 'Bridge identifier must not be empty';
                     return;
                 }
 
@@ -70,17 +100,22 @@
                 window.localStorage.setItem('org.doubango.tp.config.bridge_pin', tp_txt_bridge_pin.value);
 
                 if (!tp.stack) {
-                    var display_name = (window.localStorage.getItem('org.doubango.tp.config.display_name') || tp.config.display_name);
-                    var realm = (window.localStorage.getItem('org.doubango.tp.config.realm') || tp.config.realm);
-                    var impi = (window.localStorage.getItem('org.doubango.tp.config.impi') || tp.config.impi);
-                    var websocket_proxy_url = (window.localStorage.getItem('org.doubango.tp.config.websocket_server_url') || tp.config.websocket_proxy_url);
-                    var sip_outbound_proxy_url = (window.localStorage.getItem('org.doubango.tp.config.sip_outboundproxy_url') || tp.config.sip_outbound_proxy_url);
+                    var display_name = tp.config_get_display_name();
+                    var realm = tp.config_get_realm();
+                    var impi = tp.config_get_impi();
+                    var websocket_proxy_url = tp.config_get_websocket_proxy_url();
+                    var sip_outbound_proxy_url = tp.config_get_sip_outbound_proxy_url();
+                    var ice_servers = tp.config_get_ice_servers();
+                    var video_size = tp.config_get_video_size();
+                    var bandwidth = tp.config_get_bandwidth();
 
-                    //if(tsk_string_is_null_or_empty(websocket_proxy_url)){
-                    //tp_txt_status.innerHTML = 'Bridge identifier must not be empty';
-                    //}
-
-                    tsk_utils_log_info('[TELEPRESENCE] realm=['+realm+'], impi=['+impi+']'+'ws_url=['+websocket_proxy_url+']');
+                    tsk_utils_log_info(
+                        '[TELEPRESENCE] realm=[' + realm + '], impi=[' + impi + '],' 
+                        + 'ws_url=[' + websocket_proxy_url + '],'
+                        + 'ice_servers=' +JSON.stringify(ice_servers) + ','
+                        + 'video_size=' + JSON.stringify(video_size) + ','
+                        + 'bandwidth=' + JSON.stringify(bandwidth)
+                    );
 
                     tp.stack = new SIPml.Stack({ realm: realm, impi: impi, impu: 'sip:' + impi + '@' + realm, password: 'mysecret',
                         events_listener: { events: '*', listener: function (e) {
@@ -89,12 +124,12 @@
                             switch (e.type) {
                                 case 'starting':
                                     {
-                                        tp_txt_status.innerHTML = 'connecting to mcu...';
+                                        tp_lbl_status.innerHTML = 'connecting to mcu...';
                                         break;
                                     }
                                 case 'started':
                                     {
-                                        tp_txt_status.innerHTML = 'connected';
+                                        tp_lbl_status.innerHTML = 'connected';
                                         tp.started = true;
                                         tp.call();
                                         break;
@@ -105,11 +140,13 @@
                                         tp.callSession = null;
                                         tp.audio_ringbacktone.pause();
                                         tp.started = false;
-                                        tp_txt_status.innerHTML = (e.type === 'stopped') ? 'disconnected' : 'disconnecting...';
+                                        tp_lbl_status.innerHTML = (e.type === 'stopped') ? 'disconnected' : 'disconnecting...';
                                         tp_div_call_options.style.visibility = 'hidden';
+                                        tp_div_presentation.style.visibility = 'hidden';
+                                        tp_div_call.style.visibility = 'visible';
                                         tp_video_local.style.opacity = tp_video_remote.style.opacity = 0;
                                         tp.fullscreen(false);
-                                        if(e.type === 'stopped'){
+                                        if (e.type === 'stopped') {
                                             tp.button_call.value = 'join';
                                             tp.callSession = null;
                                             tp.stack = null;
@@ -118,7 +155,7 @@
                                     }
                                 case 'failed_to_start':
                                     {
-                                        tp_txt_status.innerHTML = 'failed to connect';
+                                        tp_lbl_status.innerHTML = 'failed to connect';
                                         break;
                                     }
                                 case 'm_permission_requested':
@@ -140,7 +177,10 @@
                         enable_rtcweb_breaker: false,
                         enable_click2call: false,
                         websocket_proxy_url: websocket_proxy_url,
-                        outbound_proxy_url: sip_outbound_proxy_url
+                        outbound_proxy_url: sip_outbound_proxy_url,
+                        ice_servers: ice_servers,
+                        bandwidth: bandwidth,
+                        video_size: video_size
                     }/*stack-config*/);
                 }
                 if (!tp.started) {
@@ -160,7 +200,7 @@
                         },
                         function (e) { // errorCallback
                             tp.button_call.disabled = true;
-                            tp_txt_status.innerHTML = e.description;
+                            tp_lbl_status.innerHTML = e.description;
                             document.body.style.cursor = 'default';
                         }
                     );
@@ -191,12 +231,12 @@
                 return;
             }
 
-            var display_name = (window.localStorage.getItem('org.doubango.tp.config.display_name') || tp.config.display_name);
-            var realm = (window.localStorage.getItem('org.doubango.tp.config.realm') || tp.config.realm);
-            var impi = (window.localStorage.getItem('org.doubango.tp.config.impi') || tp.config.impi);
-            var job_title = (window.localStorage.getItem('org.doubango.tp.config.job_title') || tp.config.job_title);
-            var audio_velocity = (window.localStorage.getItem('org.doubango.tp.config.audio_velocity') || tp.config.audio_velocity);
-            var audio_position = (window.localStorage.getItem('org.doubango.tp.config.audio_position') || tp.config.audio_position);
+            var display_name = tp.config_get_display_name();
+            var realm = tp.config_get_realm();
+            var impi = tp.config_get_impi;
+            var job_title = tp.config_get_job_title();
+            var audio_velocity = tp.config_get_audio_velocity();
+            var audio_position = tp.config_get_audio_position();
 
             var from = /*"sip:" + impi + "@" + realm*/null;
             // var from = '\"'+display_name+'\"<sip:'+impi+'@'+realm+'>'
@@ -214,28 +254,39 @@
                 switch (e.type) {
                     case 'connecting': case 'connected':
                         {
-                            if (e.session == tp.callSession) {
-                                tp_txt_status.innerHTML = (e.type === 'connected') ? 'in call' : 'joining...';
+                            if (e.session === tp.callSession) {
                                 tp.button_call.value = 'hang up';
+                                if(e.type === 'connected') {
+                                    tp_lbl_status.innerHTML = 'in call';
+                                    tp_div_call.style.visibility = 'hidden';
+                                }
+                                else { // connecting
+                                    tp_lbl_status.innerHTML = 'joining...';
+
+                                    tp.presentation.sharing = false; tp_btn_presentation_toggle.value = "share presentation";
+                                    tp.presentation.page_count = tp.presentation.page_count = 0;
+                                    tp.config.mute = false; tp_btn_mute.value = "mute";
+                                    tp_div_call.style.visibility = 'visible';
+                                }
                             }
                             break;
                         }
                     case 'i_ao_request':
                         {
-                            if (e.session == tp.callSession) {
+                            if (e.session === tp.callSession) {
                                 var code = e.getSipResponseCode();
                                 if (code == 180 || code == 183) {
                                     tp.audio_ringbacktone.play();
-                                    tp_txt_status.innerHTML = 'ringing...';
+                                    tp_lbl_status.innerHTML = 'ringing...';
                                 }
                             }
                             break;
                         }
                     case 'm_early_media':
                         {
-                            if (e.session == tp.callSession) {
+                            if (e.session === tp.callSession) {
                                 tp.audio_ringbacktone.pause();
-                                tp_txt_status.innerHTML = 'early media...';
+                                tp_lbl_status.innerHTML = 'early media...';
                             }
                             break;
                         }
@@ -244,26 +295,66 @@
                     case 'm_stream_video_remote_added':
                     case 'm_stream_video_remote_removed':
                         {
-                            if (e.session == tp.callSession) {
+                            if (e.session === tp.callSession) {
                                 if (e.type === 'm_stream_video_local_added') tp_video_local.style.opacity = 1;
                                 else if (e.type === 'm_stream_video_local_removed') tp_video_local.style.opacity = 0;
-                                else if (e.type === 'm_stream_video_remote_added') { tp_video_remote.style.opacity = 1; tp_div_call_options.style.visibility = 'visible'; }
-                                else if (e.type === 'm_stream_video_remote_removed') { tp_video_remote.style.opacity = 0; tp.fullscreen(false); }
+                                else if (e.type === 'm_stream_video_remote_added') { 
+                                    tp_video_remote.style.opacity = 1; 
+                                    tp_div_call_options.style.visibility = 'visible'; 
+                                    tp_div_call.style.visibility = 'hidden';
+
+                                    tp_btn_presentation_toggle.disabled = false;
+                                }
+                                else if (e.type === 'm_stream_video_remote_removed') { 
+                                    tp_video_remote.style.opacity = 0; 
+                                    tp.fullscreen(false);
+
+                                    tp_btn_presentation_toggle.disabled = true;
+                                }
+                            }
+                            break;
+                        }
+                    case "i_info":
+                        {
+                            if (e.session === tp.callSession) {
+                                if (e.getContentType() === 'application/json') {
+                                    var JSONObject = JSON.parse(e.getContentString());
+                                    if(JSONObject.action === 'res_presentation_state') {
+                                        tp_btn_presentation_toggle.disabled = false;
+                                        tp_btn_presentation_toggle.value = (JSONObject.state === 'closed' || JSONObject.state === 'error') ? "share presentattion" : "close presentation";
+                                        tp_div_presentation.style.visibility = (JSONObject.state === 'closed' || JSONObject.state === 'error') ? 'hidden' : 'visible';
+                                        tp.presentation.sharing = (JSONObject.state != 'closed' && JSONObject.state != 'error');
+                                        if(JSONObject.state === 'closed' || JSONObject.state === 'error') {
+                                            
+                                        }
+                                        else if(JSONObject.state === 'opened') {
+                                            tp.presentation.page_index = 0;
+                                            tp.presentation.page_count = tp.parseInt(JSONObject.page_count, 0);
+                                            tp.presentation_goto(0);
+                                        }
+                                        else if(JSONObject.state === 'exported') {
+                                            tp.presentation.page_index = tp.parseInt(JSONObject.page_index, tp.presentation.page_index);
+                                            tp_lbl_presname.innerHTML = tp.presentation.name + "(" + (JSONObject.page_index + 1) + " / " + JSONObject.page_count + ")";
+                                        }
+                                    }
+                                }
                             }
                             break;
                         }
                     case 'terminating': case 'terminated':
                         {
-                            if (e.session == tp.callSession) {
-                                tp_txt_status.innerHTML = e.description.toLowerCase();
+                            if (e.session === tp.callSession) {
+                                tp_lbl_status.innerHTML = e.description.toLowerCase();
                                 tp.button_call.value = 'join';
                                 tp.callSession = null;
                                 tp.audio_ringbacktone.pause();
                                 tp.div_glass.style.visibility = 'hidden';
                                 tp_div_call_options.style.visibility = 'hidden';
+                                tp_div_presentation.style.visibility = 'hidden';
+                                tp_div_call.style.visibility = 'visible';
                                 tp_video_local.style.opacity = tp_video_remote.style.opacity = 0;
                                 tp.fullscreen(false);
-                                window.setTimeout(function () { tp_txt_status.innerHTML = ''; }, 2000);
+                                window.setTimeout(function () { tp_lbl_status.innerHTML = ''; }, 2000);
                             }
                             break;
                         }
@@ -276,6 +367,8 @@
                 audio_remote: tp.audio_remote,
                 video_local: /* tp_video_local */null,
                 video_remote: tp_video_remote,
+                bandwidth: tp.config_get_bandwidth(),
+                video_size: tp.config_get_video_size(),
                 events_listener: { events: '*', listener: call_listener },
                 sip_caps: [
                                         { name: '+g.oma.sip-im' },
@@ -283,14 +376,189 @@
                                         { name: 'language', value: '\"en,fr\"' }
                                     ],
                 sip_headers: [
-                        {name: 'TP-JobTitle', value: job_title, session: true}, 
-                        {name: 'TP-BridgePin', value: tp_txt_bridge_pin.value, session: true},
-                        {name: 'TP-AudioPosition', value: audio_position, session: true},
-                        {name: 'TP-AudioVelocity', value: audio_velocity, session: true},
-                        {name: 'Organization', value: tp.config.organization, session: true}
+                        { name: 'TP-JobTitle', value: job_title, session: true },
+                        { name: 'TP-BridgePin', value: tp_txt_bridge_pin.value, session: true },
+                        { name: 'TP-AudioPosition', value: audio_position, session: true },
+                        { name: 'TP-AudioVelocity', value: audio_velocity, session: true },
+                        { name: 'Organization', value: tp.config.organization, session: true }
                 ]
             });
             tp.callSession.call(to);
+        }
+
+        tp.hangup = function() {
+            if(tp.callSession) {
+                tp.callSession.hangup();
+            }
+        }
+
+        tp.parseInt = function(s_str, i_default) {
+            try{ return parseInt(s_str); }
+            catch(e){ return i_default; }
+        }
+
+        tp.place_div = function (div, s_location, b_make_visible) {
+            if(b_make_visible) {
+                div.style.visibility = 'visible';
+            }
+            switch(s_location) {
+                case 'top-center':
+                default:
+                    {
+                        div.style.top = tp_div_navbar.clientHeight + 5 + 'px';
+                        div.style.left = ((document.body.clientWidth - div.clientWidth) >> 1) + 'px';
+                        break;
+                    }
+                case 'top-right':
+                    {
+                        div.style.top = tp_div_navbar.clientHeight + 5 + 'px';
+                        div.style.left = (document.body.clientWidth - div.clientWidth - 20) + 'px';
+                        break;
+                    }
+                case 'top-left':
+                    {
+                        div.style.top = tp_div_navbar.clientHeight + 5 + 'px';
+                        div.style.left = '20px';
+                        break;
+                    }
+                case 'center-center':
+                    {
+                        div.style.top = ((document.body.clientHeight - div.clientHeight) >> 1) + 'px';
+                        div.style.left = ((document.body.clientWidth - div.clientWidth) >> 1) + 'px';
+                        break;
+                    }
+                    
+            }
+        }
+
+        tp.close_div = function (div) {
+            div.style.visibility = 'hidden';
+        }
+
+        tp.upload_files = function(files) {
+            if(files.length > 0) {
+                var file = files[0];
+                tp_btn_presentation_toggle.disabled = true;
+                tp.presentation.name = file.name;
+
+                tsk_utils_log_info('[TELEPRESENCE] sharing file with name =' + file.name + ' using http_server_url =' + tp.config_get_http_server_url());
+
+                var reader = null;
+                var xhr = new XMLHttpRequest();
+                var JSONText = JSON.stringify
+                (
+                        {
+                            action: 'req_presentation_upload',
+                            name: file.name,
+                            type: file.type,
+                            size: file.size,
+                            bridge_id: tp_txt_bridge_id.value,
+                            bridge_pin: tp_txt_bridge_pin.value,
+                            user_id: tp.config_get_impi()
+                        }
+                );
+
+                // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+                if(!XMLHttpRequest.prototype.sendAsBinary) {
+                    XMLHttpRequest.prototype.sendAsBinary = function(datastr) {
+                        function byteValue(x) {
+                            return x.charCodeAt(0) & 0xff;
+                        }
+                        var ords = Array.prototype.map.call(datastr, byteValue);
+                        var ui8a = new Uint8Array(ords);
+                        this.send(ui8a.buffer);
+                    }
+                }
+
+                var self = this;
+                xhr.onreadystatechange = function (e) {
+                    var JSONObject;
+                    try{
+                        if (this.readyState == XMLHttpRequest.DONE) {
+                            if (this.status == 200 && this.readyState == XMLHttpRequest.DONE){
+                                if(!reader) {
+                                    xhr.open("POST", tp.config_get_http_server_url() + "/presentation");
+                                    xhr.setRequestHeader("Content-type", "application/file");
+                                    reader = new FileReader();
+                                    // send file data 
+                                    reader.onload = function (evt) {
+                                        xhr.sendAsBinary(evt.target.result);
+                                    };
+                                    reader.readAsBinaryString(file);
+                                }
+                                else {
+                                    xhr.abort();
+                                }
+                                if(this.responseText) {
+                                    tsk_utils_log_info('[TELEPRESENCE] RECV: ' + this.responseText);
+                                }
+                            }
+                            else {
+                                tsk_utils_log_error('[TELEPRESENCE] ' + JSON.stringify({ status: this.status, statusText: this.statusText ? 'timeout' : this.statusText, JSONObject: JSONObject }));
+                            }
+                        }
+            
+                    }
+                    catch(ex) {
+                        tsk_utils_log_error('[TELEPRESENCE] ' + ex.toString());
+                    }
+                }
+                xhr.upload.addEventListener("progress", function (e) {
+                    if (e.lengthComputable) {
+                        var percentage = Math.round((e.loaded * 100) / e.total);
+                        tp_lbl_presname.innerHTML = tp.presentation.name + "("+ percentage +"%)";
+                    }
+                }, false);
+
+                xhr.upload.addEventListener("load", function (e) {
+                    tsk_utils_log_info('[TELEPRESENCE] Uploading: ' + tp.presentation.name + 'done!');
+                }, false);
+                xhr.open("POST", tp.config_get_http_server_url() + "/presentation");
+                //xhr.overrideMimeType(file.type);
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(JSONText);
+            }
+            tp_file_elem.value = "";
+        } // endof (tp.upload_files())
+
+        tp.presentation_goto = function(i_index) {
+            if(tp.callSession && i_index >= 0 && i_index < tp.presentation.page_count) {
+                tp.callSession.info(JSON.stringify({action: 'req_presentation_goto', page_index: i_index}), 'application/json');
+            }
+        }
+        tp.presentation_next = function() {
+            tp.presentation_goto(tp.presentation.page_index + 1);
+        }
+        tp.presentation_prev = function() {
+            tp.presentation_goto(tp.presentation.page_index - 1);
+        }
+        tp.presentation_close = function() {
+            if(tp.callSession) {
+                tp_btn_presentation_toggle.disabled = true;
+                tp.callSession.info(JSON.stringify({action: 'req_presentation_close'}), 'application/json');
+            }
+        }
+        tp.presentation_upload = function() {
+            if(tp.callSession) {
+                tp_file_elem.click();
+            }
+        }
+        tp.presentation_toggle = function() {
+            if(tp.presentation.sharing) {
+                tp.presentation_close();
+            }
+            else {
+                tp.presentation_upload();
+            }
+        }
+
+        tp.mute_toggle = function() {
+            if(tp.callSession) {
+                if(tp.callSession.info(JSON.stringify({action: 'req_call_mute', enabled: !tp.config.mute}), 'application/json') == 0) {
+                    tp.config.mute =!tp.config.mute; // FIXME: wait for 'res_call_mute'
+                    tp_btn_mute.value = tp.config.mute ? "unmute" : "mute";
+                }
+            }
         }
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -301,11 +569,14 @@
         });
 
         window.onload = function () {
+            tp.place_div(tp_div_call, 'top-center', true);
+            tp.place_div(tp_div_presentation, 'top-right');
+            tp.place_div(tp_div_call_options, 'top-left');
         }
     </script>
 </head>
-<body style="cursor: wait">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body style="cursor: wait;">
+    <div id="tp_div_navbar"  class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
                 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -316,7 +587,7 @@
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li><a target=_blank href="https://code.google.com/p/telepresence/">source code</a></li>
-                        <li><a target="_blank" href="./technical-guide.pdf?svn=1">technical guide</a></li>
+                        <li><a target="_blank" href="./technical-guide.pdf?svn=2">technical guide</a></li>
                         <li><a target="_blank" href="./settings.htm">settings</a></li>
                         <li><a target="_blank" href="./contact.htm">contact</a></li>
                     </ul>
@@ -325,81 +596,21 @@
             </div>
         </div>
     </div>
-    <div class="container" style='border: 0px solid #000; width: 95%; height: 80%'>
-        <table id='tp_table_1' style='border: 0px solid #000; width: 100%; height: 100%;'>
-        <tr>
-            <td style='border: 0px solid #000; width: 20%;' align='center' valign='top'>
-                    <table id='tp_table_2'>
-                        <tr>
-                            <td><!--img alt='logo' src="assets/img/tp-logo.jpg" /--><img alt='logo' src="assets/img/webrtc-logo.png" /><hr /></td>
-                        </tr>
-                        <tr>
-                            <td style="white-space: nowrap;" align='center'>
-                                <label style="width: 100%;" align="center" id="tp_txt_status">
-                                    --</label>
-                                    
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="white-space: nowrap;" align='center'>
-                                <input type="text" style="width: 100%; height: 100%; font-size:12px" id="tp_txt_bridge_id" value=""
-                                    title="Bridge identifier (required)" placeholder="Bridge identifier (required)" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" style="white-space: nowrap;" align='center'>
-                                <input type="text" style="width: 100%; height: 100%; font-size:12px" id="tp_txt_bridge_pin" value=""
-                                    title="Bridge 4-digits pin code (optional)" placeholder="Bridge 4-digits pin code (optional)" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align='center'>
-                                <input type="button" class="btn btn-success" style="" id="tp_btn_call" value="join"
-                                    disabled /><hr />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id='tp_td_call_options' colspan="1" align='center'>
-                                <div id="tp_div_call_options" style='visibility: hidden; border: 0px solid #000; width: 100%; height: 100%'>
-                                    <input type="button" class="btn btn-secondary" style="" id="tp_btn_hold_resume" value="hold" disabled />&nbsp;&nbsp;
-                                    <input type="button" class="btn btn-secondary" style="" id="tp_btn_fullscreen" value="full screen" onclick='tp.fullscreen(true);' />
-                                    </div>
-                            </td>
-                        </tr>
-                    </table>  <!-- table_2-->              
-            </td>
-            <td style='border: 0px solid #000; width: 80%; height: 100%;'>
-                <table id='tp_table_3' style='border: 0px solid #000; width: 100%; height: 100%;'>
-                    <tr style='border: 0px solid #000; width: 100%; height: 100%'>
-                        <td id="tp_td_video" colspan="1" style='border: 0px solid #000; width: 100%; height: 100%'>
-                            <div id="tp_div_video" style='border: 0px solid #000; width: 100%; height: 100%'>
-                                <div id="divVideoRemote" style='border: 0px solid #000; height: 100%; width: 100%'>
-                                    <video class="video" width="100%" height="100%" id="tp_video_remote" autoplay="autoplay"
-                                        style="opacity: 0; background-color: #ffffff; -webkit-transition-property: opacity;
-                                        -webkit-transition-duration: 2s;">
-                                    </video>
-                                </div>
-                                <div id="tp_div_video_local" style='border: 0px solid #000'>
-                                    <video class="video" width="88px" height="72px" id="tp_video_local" autoplay="autoplay"
-                                        muted="true" style="opacity: 0; margin-top: -80px; margin-left: 5px; background-color: #ffffff;
-                                        -webkit-transition-property: opacity; -webkit-transition-duration: 2s;">
-                                    </video>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table> <!-- table_3 -->
-            </td>
-        </tr>
-        </table> <!-- table_1 -->
+    <div class="container" style='border: 0px solid #000; width: 100%; height: 90%'>
+        <div id="tp_div_video" style='border: 0px solid #000; width: 100%; height: 100%'>
+            <div id="divVideoRemote" style='border: 0px solid #000; height: 100%; width: 100%'>
+                <video class="video" width="100%" height="100%" id="tp_video_remote" autoplay="autoplay"
+                    style="opacity: 0; background-color: #ffffff; ">
+                </video>
+            </div>
+            <div id="tp_div_video_local" style='border: 0px solid #000'>
+                <video class="video" width="88px" height="72px" id="tp_video_local" autoplay="autoplay"
+                    muted="true" style="opacity: 0; margin-top: -80px; margin-left: 5px; background-color: #ffffff; ">
+                </video>
+            </div>
+        </div>
     </div>
     <!-- container -->
-    <hr />
-    <footer>
-        <p>
-            &copy; <a href="http://doubango.org/" target=_blank>Doubango Telecom 2013</a></p>
-        <i>Inspiring the future</i>
-    </footer>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -416,8 +627,70 @@
       ga('send', 'pageview');
 
     </script>
+    <!-- Glass Div -->
     <div id='tp_div_glass' style='visibility: hidden; z-index: 99; position: fixed; width: 100%;
         height: 100%; margin: 0; padding: 0; top: 0; left: 0; opacity: 0.8; background-color: Gray'>
+    </div>
+    <!-- File Input -->
+    <input type="file" id="tp_file_elem" accept=".ppt,.pttx" style="display:none" onchange="tp.upload_files(this.files);">
+    <!-- Presentation Div -->
+    <div id='tp_div_presentation' class='div-options' style="left:0px; top:0px; visibility:hidden">
+        <table id='tp_table_0' style='border: 1px solid #000; width: 100%; height: 100%;'>
+            <tr>
+                <td style="white-space: nowrap;" align='center' colspan=2><label style="width: 100%;" align="center" id="tp_lbl_presname">this_is_myawsome_presentation_with_a_long_name.ppt (100%)</label></td>
+            </tr>
+            <tr>
+                <td align="right">&nbsp;&nbsp;<input type="button" style="background-color:transparent; border: 1px solid #000" id="tp_btn_presentation_prev" value="&laquo; prev" onclick="tp.presentation_prev();" /></td>
+                <td align="left">&nbsp;&nbsp;<input type="button" style="background-color:transparent; border: 1px solid #000" id="tp_btn_presentation_next" value="next &raquo;" onclick="tp.presentation_next();" />&nbsp;&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <!-- CallOptions Div -->
+    <div id='tp_div_call_options' class='div-options' style="left:0px; top:0px; visibility:hidden">
+        <table id='tp_table_1' style='border: 0px solid #000; width: 100%; height: 100%;'>
+            <tr>
+                <td><input type="button" style="background-color:transparent; border: 1px solid #000" id="tp_btn_hangup" value="hangup" onclick='tp.hangup();' />&middot;</td>
+                <td><input type="button" style="background-color:transparent; border: 1px solid #000" id="tp_btn_fullscreen" value="full screen" onclick='tp.fullscreen(true);' />&middot;</td>
+                <td><input type="button" style="background-color:transparent; border: 1px solid #000" id="tp_btn_mute" value="mute" onclick="tp.mute_toggle();" />&middot;</td>
+                <td><input type="button" style="background-color:transparent; border: 1px solid #000" id="tp_btn_presentation_toggle" value="share presentation" disabled onclick="tp.presentation_toggle();" /></td>
+            </tr>
+        </table>
+    </div>
+    <!-- Call Div -->
+    <div id='tp_div_call' class='div-options' style="left:0px; top:0px; visibility:hidden">
+        <table id='tp_table_2' style='border: 0px solid #000; width: 100%; height: 100%;'>
+            <tr>
+                <td><!--img alt='logo' src="assets/img/tp-logo.jpg" /--><img alt='logo' src="assets/img/webrtc-logo.png" /><hr /></td>
+            </tr>
+            <tr>
+                <td style="white-space: nowrap;" align='center'>
+                    <label style="width: 100%;" align="center" id="tp_lbl_status">--</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="white-space: nowrap;" align='center'>
+                    <input type="text" style="width: 100%; height: 100%; font-size:12px" id="tp_txt_bridge_id" value=""
+                        title="Bridge identifier (required)" placeholder="Bridge identifier (required)" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" style="white-space: nowrap;" align='center'>
+                    <input type="text" style="width: 100%; height: 100%; font-size:12px" id="tp_txt_bridge_pin" value=""
+                        title="Bridge 4-digits pin code (optional)" placeholder="Bridge 4-digits pin code (optional)" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" align='center'>
+                    <input type="button" class="btn btn-success" style="" id="tp_btn_call" value="join" disabled /><hr />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>&copy; <a href="http://doubango.org/" target=_blank>Doubango Telecom 2013</a></p>
+                    <i>Inspiring the future</i>
+                </td>
+            </tr>
+        </table>  <!-- table_2-->
     </div>
 </body>
 </html>

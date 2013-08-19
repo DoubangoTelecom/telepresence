@@ -43,6 +43,11 @@
             window.localStorage.setItem('org.doubango.tp.config.audio_position', tp_txt_audio_position.value);
             window.localStorage.setItem('org.doubango.tp.config.websocket_server_url', tp_txt_ws_url.value);
             window.localStorage.setItem('org.doubango.tp.config.realm', tp_txt_realm.value);
+            window.localStorage.setItem('org.doubango.tp.config.http_server_url', tp_txt_http_url.value);
+
+            window.localStorage.setItem('org.doubango.tp.config.ice_servers', tp_txt_ice_servers.value);
+            window.localStorage.setItem('org.doubango.tp.config.bandwidth', tp_txt_bandwidth.value);
+            window.localStorage.setItem('org.doubango.tp.config.video_size', tp_txt_video_size.value);
 
             txt_label_info.innerHTML = '<i>Saved</i>';
         }
@@ -56,6 +61,10 @@
                 tp_txt_audio_position.value = (window.localStorage.getItem('org.doubango.tp.config.audio_position') || null);
                 tp_txt_ws_url.value = (window.localStorage.getItem('org.doubango.tp.config.websocket_server_url') || null);
                 tp_txt_realm.value = (window.localStorage.getItem('org.doubango.tp.config.realm') || null);
+                tp_txt_http_url.value = (window.localStorage.getItem('org.doubango.tp.config.http_server_url') || null);
+                tp_txt_ice_servers.value = (window.localStorage.getItem('org.doubango.tp.config.ice_servers') || null);
+                tp_txt_bandwidth.value = (window.localStorage.getItem('org.doubango.tp.config.bandwidth') || null);
+                tp_txt_video_size.value = (window.localStorage.getItem('org.doubango.tp.config.video_size') || null);
             }
 
             if (!bNotUserAction) {
@@ -76,7 +85,7 @@
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li><a target=_blank href="https://code.google.com/p/telepresence/">source code</a></li>
-                        <li><a target="_blank" href="./technical-guide.pdf?svn=1">technical guide</a></li>
+                        <li><a target="_blank" href="./technical-guide.pdf?svn=2">technical guide</a></li>
                         <li class="active"><a href="#">settings</a></li>
                         <li><a href="./contact.htm">contact</a></li>
                     </ul>
@@ -97,8 +106,13 @@
             </div>
             <br />
             <div style="width:100%; display:table">
-                <label for="tp_txt_realm" style="display:table-cell; width:1px">Domain&nbsp;Name:&nbsp;</label>
-                <input type="text" id="tp_txt_realm" style="display:table-cell; width:100%; height: 100%" placeholder="conf-call.org" />
+                <label for="tp_txt_realm" style="display:table-cell; width:1px">Http/Https&nbsp;URL:&nbsp;</label>
+                <input type="text" id="tp_txt_http_url" style="display:table-cell; width:100%; height: 100%" placeholder="http://192.168.0.37:20065" />
+            </div>
+            <br />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_realm" style="display:table-cell; width:1px">ICE&nbsp;Servers:&nbsp;</label>
+                <input type="text" id="tp_txt_ice_servers" style="display:table-cell; width:100%; height: 100%" placeholder="[{ url: 'stun:stun.l.google.com:19302'}, { url:'turn:user@numb.viagenie.ca', credential:'myPassword'}]" />
             </div>
             <hr />
             <h5>Personal information</h5>
@@ -106,6 +120,11 @@
             <div style="width:100%; display:table">
                 <label for="tp_txt_impi" style="display:table-cell; width:1px">Private&nbsp;Identity:&nbsp;</label>
                 <input type="text" id="tp_txt_impi" style="display:table-cell; width:100%; height: 100%" placeholder="johndoe" />
+            </div>
+            <br />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_realm" style="display:table-cell; width:1px">Domain&nbsp;Name:&nbsp;</label>
+                <input type="text" id="tp_txt_realm" style="display:table-cell; width:100%; height: 100%" placeholder="conf-call.org" />
             </div>
             <br />
             <div style="width:100%; display:table">
@@ -117,6 +136,19 @@
                 <label for="tp_txt_job_title" style="display:table-cell; width:1px">Job&nbsp;Title:&nbsp;</label>
                 <input type="text" id="tp_txt_job_title" style="display:table-cell; width:100%; height: 100%" placeholder="Technology Evangelist" />
             </div>
+            <hr />
+            <h5>Media information</h5>
+            <hr />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_job_title" style="display:table-cell; width:1px">Bandwidth:&nbsp;</label>
+                <input type="text" id="tp_txt_bandwidth" style="display:table-cell; width:100%; height: 100%" placeholder="{ audio:64, video:512 }" />
+            </div>
+            <br />
+            <div style="width:100%; display:table">
+                <label for="tp_txt_job_title" style="display:table-cell; width:1px">Video&nbsp;Size:&nbsp;</label>
+                <input type="text" id="tp_txt_video_size" style="display:table-cell; width:100%; height: 100%" placeholder="{ minWidth: 640, minHeight:480, maxWidth: 640, maxHeight:480 }" />
+            </div>
+
             <hr />
             <h5>Stereoscopic 3D audio</h5>
             <hr />
