@@ -21,4 +21,4 @@ _Configuration 2: Signaling (SIP) transports_
  * <u>local-port-value</u> is any unused local port to bind to. Use star (*) to let the system choose the best unused port to bind to. Examples: udp;*;* or ws;*;* or wss;*;5062
  * <u>ip-version-value</u> defines the IP version to use. Must be *4*, *6* or <b>`*`</b>. Star (`*`) is used to let the system choose the best one. Using star (`*`) only make sense if local-ip-value is a FQDN instead of IP address.
 A transport configuration entry must have at least a protocol, IP address (or star) and port (or star). The IP version is optional.<br />
-*udp* , *tcp* , *tls* , *ws* and *wss* transports are used to transport SIP messages while *http* and *https* are used to upload presentations.
+*udp* , *tcp* , *tls* , *ws* and *wss* protocols are used to transport SIP messages while *http* and *https* are used to upload presentations.
