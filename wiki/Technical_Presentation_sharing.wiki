@@ -150,7 +150,7 @@ JSON content:
 </tr>
 <tr>
 <td align="center">action</td>
-<td align="center">“req_presentation_upload”</td>
+<td align="center">“res_presentation_state”</td>
 <td align="center">String</td>
 <td align="center">Mandatory</td>
 </tr>
