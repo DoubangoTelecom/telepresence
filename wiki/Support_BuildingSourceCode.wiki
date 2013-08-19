@@ -253,7 +253,7 @@ yum install java-1.7.0-openjdk
 }}}
 
 ====Notes====
-Installing OpenOffice application will not add the binary (*soffice*) in your *$PATH* environment variable. The TelePresence system will try to start the program in the background using a relative path unless you have changed *presentation-sharing-app* configuration entry. You can change your *$PATH* environment variable to avoid editing *presentation-sharing-app* but this is not recommend if you’re testing different OpenOffice versions. It’s also highly recommended to append the folder containing the binary *AFTER $PATH*. Appending the folder before *$PATH* will force using shared libraries (e.g. libssl, libcurl…) installed with OpenOffice instead of yours.<br />
+Installing OpenOffice application will not add the binary (*soffice*) in your *$PATH* environment variable. The TelePresence system will try to start the program in the background using a relative path unless you have changed [Configuration_Presentation_sharing presentation-sharing-app] configuration entry. You can change your *$PATH* environment variable to avoid editing [Configuration_Presentation_sharing presentation-sharing-app] but this is not recommend if you’re testing different OpenOffice versions. It’s also highly recommended to append the folder containing the binary *AFTER $PATH*. Appending the folder before *$PATH* will force using shared libraries (e.g. libssl, libcurl…) installed with OpenOffice instead of yours.<br />
 <u>Correct:</u> {{{export PATH=$PATH:/opt/openoffice4/program}}}<br />
 <u>*NOT* correct:</u> {{{export PATH=/opt/openoffice4/program: $PATH}}}
 
