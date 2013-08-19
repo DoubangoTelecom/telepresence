@@ -1,0 +1,115 @@
+#summary [Technical details] Presentation hsraing
+#labels Featured,Phase-Support,Phase-Deploy
+
+<wiki:toc max_depth="4" />
+
+Presentation sharing allows *any SIP client* to share *PowerPoint* documents with any client connected to the same bridge. The only technical requirements are support for *HTTP(S)* (sharer only) and *SIP INFO*. <br />
+This is a revolutionary way to share presentation as the documents are *“streamed”* in the video channel which means any client supporting video could see it. The slides are extracted from the document using [Support_BuildingSourceCode#Building_openOffice OpenOffice] (or [Support_BuildingSourceCode#Building_openOffice LibreOffice]) as JPEG pictures, re-encoded (H.264, VP8 or whatever) and mixed in the current video stream. Technically, OpenOffice is not integrated in the system but forked as new process and this is why both the SDK and application are required. The OpenOffice process will be started by the TelePresence system at boot time and added to the same job group as the current process to make sure the child will exit when the parent unexpectedly die. The default port used for the inter-process commutation is *2083* and could be changed using the configuration as explained [Configuration_Presentation_sharing here].<br />
+The TelePresence system supports [https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS CORS] which means the request could be sent from any domain. <br />
+This feature could be tested using our online [http://conf-call.org/ WebRTC SIP client]. <br />
+
+Steps:
+ # Publish the PowerPoint document to the bridge using *HTTP(S) POST* requests.
+ # Receive feedbacks from the MCU (*SIP INFO* messages).
+ # Move from slide to slide using *SIP INFO* messages.
+ # Close the presentation session using *SIP INFO* message.
+
+==Publishing the document==
+To start sharing a PowerPoint document you must have an active video session. You can only share *ONE* presentation at time. <br />
+The document is sent to the MCU in *TWO* HTTP(S) requests using the same connection. The first request sends information about the document and the second the content. You must not mix the document information and content. <br />
+The TelePresence system must be configured with an _http_ or _https_ transport (or both) as explained [Configuration_SIP_network_transports here].
+<br />
+The first request structure:
+<table border=1 width=100%>
+<tr>
+<td align="center">*Element*</td>
+<td align="center">*Value*</td>
+<td align="center">*Availability*</td>
+</tr>
+<tr>
+<td align="center">Request type</td>
+<td align="center">HTTP(S) POST</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">Request URL</td>
+<td align="center">/presentation</td>
+<td align="center">Optional</td>
+</tr>
+<tr>
+<td align="center">Content-Type</td>
+<td align="center">application/json</td>
+<td align="center">Mandatory</td>
+</tr>
+</table>
+
+First request content (JSON):
+<table border=1 width=100%>
+<tr>
+<td align="center">*Field name*</td>
+<td align="center">*Field value*</td>
+<td align="center">*Type*</td>
+<td align="center">*Availability*</td>
+</tr>
+<tr>
+<td align="center">action </td>
+<td align="center">“req_presentation_upload”</td>
+<td align="center">String</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">name</td>
+<td align="center"><user defined></td>
+<td align="center">String</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">type</td>
+<td align="center"><user defined></td>
+<td align="center">String</td>
+<td align="center">Optional</td>
+</tr>
+<tr>
+<td align="center">size</td>
+<td align="center"><user defined></td>
+<td align="center">Integer</td>
+<td align="center">Optional</td>
+</tr>
+<tr>
+<td align="center">bridge_id</td>
+<td align="center"><user defined></td>
+<td align="center">String</td>
+<td align="center">Optional</td>
+</tr>
+<tr>
+<td align="center">bridge_pin</td>
+<td align="center"><user defined></td>
+<td align="center">String</td>
+<td align="center">Optional</td>
+</tr>
+<tr>
+<td align="center">user_id</td>
+<td align="center"><user defined></td>
+<td align="center">String</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td colspan=5>
+{{{
+POST /presentation HTTP/1.1
+Host: 192.168.0.37:20065
+Connection: keep-alive
+Content-Length: 174
+Origin: http://conf-call.org
+User-Agent: Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36
+Content-type: application/json
+Accept: */*
+Referer: http://conf-call.org
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+
+{"action":"req_presentation_upload","name":"db_pres_01.ppt","type":"application/vnd.ms-powerpoint","size":752128,"bridge_id":"100600","bridge_pin":"1234","user_id":"johndoe"}
+}}}
+</td>
+</tr>
+</table>
