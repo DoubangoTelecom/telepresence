@@ -8,7 +8,7 @@ transport = ws;*;20060;4
 transport = wss;*;20062;*
 transport = tcp;*;20063
 transport = tls;*;20064;*
-transport = https;*;20065
+transport = http;*;20065
 transport = https;*;20066
 
 }}}
