@@ -226,7 +226,7 @@ make && make install
 
 ===Building openOffice===
 
-[http://www.openoffice.org/ OpenOffice] (or [https://www.libreoffice.org/ LibreOffice]) are optional and add support for presentation sharing. For information about this feature, check section ~5.14~. *Version 4.0 or later is required*. Both the application and SDK are required.<br />
+[http://www.openoffice.org/ OpenOffice] (or [https://www.libreoffice.org/ LibreOffice]) are optional and add support for presentation sharing. For information about this feature, check [Technical_Presentation_sharing the technical details]. *Version 4.0 or later is required*. Both the application and SDK are required.<br />
 This section explain how to install (building would take hours) [http://www.openoffice.org/ OpenOffice]. [https://www.libreoffice.org/ LibreOffice] could also be used but not recommended (not fully tested).<br />
 *<u>IMPORTANT:</u>* These instructions are for *Linux x86-64* and you must change the paths if you’re using a 32-bit system. Run _uname -m_ to get your CPU type. All rpms could be found at [http://www.openoffice.org/download/other.html].
 {{{
