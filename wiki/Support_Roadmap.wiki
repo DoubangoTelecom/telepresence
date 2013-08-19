@@ -14,9 +14,3 @@
  # Allows interconnection with Skype, Lync, Cisco....
  # JSON API to get information on the call (participants, statues, positions, volume level...) and manage the bridge (invite user, mute participant, kick off...). *Started in r118. Check [Technical_Call_session_management here]*.
  # Add a beep sound when new participant join
-
-=Next Release=
- * Fix crash issue when last user leave the bridge (only if more than 8 users). Discussion thread: [https://groups.google.com/forum/#!topic/opentelepresence/H7SnO_Hl7VQ]
- * Fix issue on malformed meta-data in recorded files. Discussion thread: [https://groups.google.com/forum/#!topic/opentelepresence/Kun_OvtL3eI]. [Support_Known_issues Known issue #2]
- * Fix stretching issue. [Support_Known_issues Known issue #3]
- * Adds support for new configuration entries: _video-speaker-par_, _video-listener-par_
