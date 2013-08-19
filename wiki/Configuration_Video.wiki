@@ -59,7 +59,16 @@ video-mixed-size = vga
 }}}
 _Configuration 13: Setting output mixed video size_
 
-In this beta version, it’s not allowed to set arbitrary values because of backward compatibility. The final version will probably allow this.
+In this beta version, it’s not allowed to set arbitrary values because of backward compatibility. The final version will probably allow this. <br />
+To draw the speaker and listeners video on the output mixed video we need to resize these frames to feet the destination. The video frames are linearly resized following a specific [http://en.wikipedia.org/wiki/Pixel_aspect_ratio Pixel Aspect Ratio (PAR)] before being [http://en.wikipedia.org/wiki/Letterboxing_(filming) letterboxed].
+{{{
+video-speaker-par = 0:0
+video-listener-par = 1:1
+}}}
+_Configuration 15: Setting Pixel Aspect Ratio_<br />
+A PAR equal to _1:1_ means _“skip the linear resizing”_ and a value of _0:0_ means _“skip both linear resizing and letterboxing”_. <br />
+Common PAR values: _1:1_, _16:9_ or _4:3_.
+
 
 =Jitter Buffer=
 *video-jb-enabled* configuration entry is used to enable or disable video jitter buffer. It's highly recommended to enable video jitter buffer because it's required to have RTCP-FB (NACK, FIR, PLI... as per [http://tools.ietf.org/html/rfc5104 RFC 5104]) fully functional. Enabling video jitter buffer gives better quality and improves smoothness. For example, no RTCP-NACK messages will be sent to request dropped RTP packets if this option is disabled. It’s also up to the jitter buffer to reorder RTP packets.
