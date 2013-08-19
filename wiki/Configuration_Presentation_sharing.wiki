@@ -1,7 +1,7 @@
 #summary [Configuration] Presentation sharing
 #labels Featured,Phase-Support,Phase-Deploy
 
-A presentation is any *PowerPoint* document and it could be shared from any SIP client running on any device. The presentation is uploaded to the TelePresence system using *HTTP(S) POST* request which means a http (or https) transport must be configured as explained  [Configuration_SIP_network_transports here]. More technical details could be found in section ~5.14~.
+A presentation is any *PowerPoint* document and it could be shared from any SIP client running on any device. The presentation is uploaded to the TelePresence system using *HTTP(S) POST* request which means a http (or https) transport must be configured as explained  [Configuration_SIP_network_transports here]. More technical details could be found [Technical_Presentation_sharing here].
 {{{
 presentation-sharing-enabled = yes
 presentation-sharing-process-local-port = 2083
