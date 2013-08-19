@@ -1,4 +1,4 @@
-#summary [Technical details] Presentation hsraing
+#summary [Technical details] Presentation sharing
 #labels Featured,Phase-Support,Phase-Deploy
 
 <wiki:toc max_depth="4" />
