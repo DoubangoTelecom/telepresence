@@ -113,3 +113,123 @@ Accept-Language: en-US,en;q=0.8
 </td>
 </tr>
 </table>
+
+The second request structure:
+<table border=1 width=100%>
+<tr>
+<td align="center">*Element*</td>
+<td align="center">*Value*</td>
+<td align="center">*Availability*</td>
+</tr>
+<tr>
+<td align="center">Request type</td>
+<td align="center">HTTP(S) POST</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">Request URL</td>
+<td align="center">/presentation</td>
+<td align="center">Optional</td>
+</tr>
+<tr>
+<td align="center">Content</td>
+<td align="center">< Binary ></td>
+<td align="center">Mandatory</td>
+</tr>
+</table>
+
+==Receiving feedbacks==
+Once the presentation is published the TelePresence system will send SIP INFO messages to give feedbacks about the session state. The *SIP INFO* messages always contain JSON content. <br />
+JSON content:
+<table border=1 width=100%>
+<tr>
+<td align="center">*Field name*</td>
+<td align="center">*Field value*</td>
+<td align="center">*Type*</td>
+<td align="center">*Availability*</td>
+</tr>
+<tr>
+<td align="center">action</td>
+<td align="center">“req_presentation_upload”</td>
+<td align="center">String</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">name</td>
+<td align="center">< server defined ></td>
+<td align="center">String</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">state</td>
+<td align="center">“opened” <br />“exported” <br />“closed”<br />“error”</td>
+<td align="center">String</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">id</td>
+<td align="center">< server defined ></td>
+<td align="center">Integer</td>
+<td align="center">Optional</td>
+</tr>
+<tr>
+<td align="center">page_index</td>
+<td align="center">< server defined ></td>
+<td align="center">Integer</td>
+<td align="center">Optional (0 if missing)</td>
+</tr>
+</table>
+
+==Fetching the presentation==
+Once the presentation is opened (see previous section), you can navigate through it using *SIP INFO* messages. For security reasons the presentation is tied to your SIP connection to be sure no one else could control it. <br />
+JSON content:
+<table border=1 width=100%>
+<tr>
+<td align="center">*Field name*</td>
+<td align="center">*Field value*</td>
+<td align="center">*Type*</td>
+<td align="center">*Availability*</td>
+</tr>
+<tr>
+<td align="center">action</td>
+<td align="center">“req_presentation_goto”</td>
+<td align="center">String</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">page_index</td>
+<td align="center">< user defined ></td>
+<td align="center">Integer</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">id</td>
+<td align="center">< user defined ></td>
+<td align="center">Integer</td>
+<td align="center">Optional</td>
+</tr>
+</table>
+
+==Closing the presentation==
+At any time you can end the presentation session using *SIP INFO* request. <br />
+JSON content:
+<table border=1 width=100%>
+<tr>
+<td align="center">*Field name*</td>
+<td align="center">*Field value*</td>
+<td align="center">*Type*</td>
+<td align="center">*Availability*</td>
+</tr>
+<tr>
+<td align="center">action</td>
+<td align="center">“req_presentation_close”</td>
+<td align="center">String</td>
+<td align="center">Mandatory</td>
+</tr>
+<tr>
+<td align="center">id</td>
+<td align="center">< user defined ></td>
+<td align="center">Integer</td>
+<td align="center">Optional</td>
+</tr>
+</table>
