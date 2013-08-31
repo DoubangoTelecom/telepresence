@@ -5,7 +5,7 @@
 
 ==1. Lowering CPU==
 ===1.1 Avoid audio resampling===
-To avoid audio resampling, the SIP clients connecting to a bridge have to use a codec with the sample rate, channels and bits per sample as the [Technical_Audio_mixer_design "pivot settings"]. For more information, check section [Technical_Audio_mixer_design here]. <br />
+To avoid audio resampling, the SIP clients connecting to a bridge have to use a codec with the sample rate, channels and bits per sample as the [Technical_Audio_mixer_design "pivot settings"]. For more information, check [Technical_Audio_mixer_design here]. <br />
 <u>*tip:*</u> In you configuration file, enable codecs with same settings as the pivot.
 
 ===1.2 Only record sessions if needed===
