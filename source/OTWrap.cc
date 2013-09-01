@@ -348,10 +348,11 @@ int OTSipCallback::OnInviteEvent(const InviteEvent* e)
 				CallSession *pCallSession;
 				if((pCallSession = e->takeCallSessionOwnership()))
 				{
-					// 'user_name' could be null as per https://groups.google.com/forum/#!topic/opentelepresence/VHbELRtdQbQ
-					if(tsk_strnullORempty(pcWrappedMessage->To->uri->user_name))
+					// 'user_name' in 'To' (Huawei) and 'From' (Vidyo) could be null as per https://groups.google.com/forum/#!topic/opentelepresence/VHbELRtdQbQ and https://groups.google.com/forum/#!topic/opentelepresence/YLeDe-DPv-Q
+					// The 'To' contains the bridge id and 'From' the user id. Both must not be null.
+					if(tsk_strnullORempty(pcWrappedMessage->To->uri->user_name) || tsk_strnullORempty(pcWrappedMessage->From->uri->user_name))
 					{
-						rejectCall(pCallSession, 484, "Incomplete destination address");
+						rejectCall(pCallSession, 484, tsk_strnullORempty(pcWrappedMessage->To->uri->user_name) ? "Incomplete destination address" : "Incomplete source address");
 						delete pCallSession, pCallSession = NULL;
 						return 0;
 					}
