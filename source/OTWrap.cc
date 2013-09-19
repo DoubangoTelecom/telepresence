@@ -169,7 +169,7 @@ bool OTSipSessionAV::handleIncomingData(const char* pcContentType, const void* p
 	}
 	else
 	{
-		OT_DEBUG_ERROR("%s not supported content type");
+		OT_DEBUG_ERROR("%s not supported content type", pcContentType);
 		return false;
 	}
 }
