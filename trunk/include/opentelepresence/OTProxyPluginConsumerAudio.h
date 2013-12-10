@@ -93,6 +93,9 @@ public: /* Overrides */
 	virtual int stop() { 
 		return m_pConsumer->stopCallback();
 	}
+	virtual bool isPivotSettings() { 
+		return true; // Do not override PIVOT settings
+	}
 private:
 	OTObjectWrapper<OTProxyPluginConsumerAudio*> m_pConsumer;
 };
