@@ -25,7 +25,7 @@ AC_PROG_MAKE_SET
 
 PKG_PROG_PKG_CONFIG
 
-AC_SUBST(DOUBANGO_MINVER, 2.0.989)
+AC_SUBST(DOUBANGO_MINVER, 2.0.1050)
 AC_SUBST(LIBAVCODEC_MINVER, 54.92.100)
 AC_SUBST(LIBAVFILTER_MINVER, 3.42.103)
 AC_SUBST(LIBAVFORMAT_MINVER, 54.63.104)
@@ -333,7 +333,7 @@ if test $have_tinyrtp != yes; then
 fi
 if test $have_tinyipsec != yes; then
 	AC_CHECK_HEADERS(tinyipsec/tinyipsec_config.h, 
-		AC_CHECK_LIB(tinyIPSec, tipsec_context_create, AC_SUBST(have_tinyipsec, yes) , AC_MSG_ERROR(Failed to find libtinyIPSec), [-ltinySAK ${LIBDL}])
+		AC_CHECK_LIB(tinyIPSec, tipsec_ctx_create, AC_SUBST(have_tinyipsec, yes) , AC_MSG_ERROR(Failed to find libtinyIPSec), [-ltinySAK ${LIBDL}])
 	)
 fi
 
