@@ -260,6 +260,7 @@ Installing OpenOffice application will not add the binary (*soffice*) in your *$
 ====Known Issues====
 _"/usr/bin/ld: skipping incompatible /opt/openoffice4/sdk/lib/libuno_sal.so when searching for -luno_sal"_: CPU type mismatch (e.g. installed 64-bit libraries on 32-bit OS).
 
+_"MSG: [TELEPRESENCE] [FFmpegOverlay] Not valid No such filter: 'drawtext'"_: libfreetype is missing. You'll have to rebuild FFmpeg with this library or disable overlays.
 
 ===Building Doubango===
 [https://code.google.com/p/doubango/ Doubango VoIP framework 2.0] *SVN r989 or later is required*.
