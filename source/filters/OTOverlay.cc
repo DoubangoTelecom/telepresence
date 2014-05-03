@@ -165,7 +165,7 @@ bool OTOverlayVideoText::_updateFilter(
 		tsk_itoa(nOutWidth, &iW); // "-1" to keep aspect ratio
 		tsk_itoa(nOutHeight, &iH);
 		
-		strFilterDesc = "scale=w=" + std::string(iW) + ":h=" + std::string(iH) + (strFilterDesc.empty() ? "" : (", " + strFilterDesc));
+		strFilterDesc = "scale=w=" + std::string(iW) + ":h=" + std::string(iH) + ":flags=2" + (strFilterDesc.empty() ? "" : (", " + strFilterDesc));
 	}
 
 	OTObjectWrapper<OTFilterVideo*> oFilter = OTFilterVideo::New(strFilterDesc, nInWidth, nInHeight, nOutWidth, nOutHeight);

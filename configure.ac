@@ -141,13 +141,13 @@ test $have_libavcodec:$have_libavfilter:$have_libavformat:$have_libavutil:$have_
 
 
 # OPENAL
-AC_SUBST(have_openal, check)
+AC_SUBST(have_openal, no)
 PKG_CHECK_MODULES(OPENAL, openal >= ${OPENAL_MINVER}, AC_SUBST(have_openal, yes), 
 	AC_MSG_WARN(Cannot find libopenal >= ${OPENAL_MINVER} using pkg-config)
 
 	AC_SUBST(OPENAL_INCLUDES_FALLBACK,-I/usr/local/include)
 	AC_SUBST(OPENAL_LIBS_FALLBACK,-L/usr/local/lib)
-	AC_SUBST(OPENAL_LIBS,-lopenal)
+	AC_SUBST(OPENAL_LIBS,)
 )
 if test $have_openal != yes; then
 	AC_CHECK_HEADERS(AL/alc.h AL/al.h AL/alext.h, 
