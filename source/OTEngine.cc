@@ -333,7 +333,7 @@ bool OTEngine::setStunServer(const char* pcServerHost, unsigned short nServerPor
 			const_cast<SipStack*>(m_oSipStack->getWrappedStack())->setSTUNCred(pcUserName, pcUserPwd);
 		}
 	}
-	return MediaSessionMgr::defaultsSetStunServer(pcServerHost, nServerPort, pcUserName, pcUserPwd);
+	return MediaSessionMgr::defaultsSetStunServer(pcServerHost, nServerPort) && MediaSessionMgr::defaultsSetStunCred(pcUserName, pcUserPwd);
 }
 
 bool OTEngine::setRtpBufferSize(size_t nBufferSize)

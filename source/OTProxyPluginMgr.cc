@@ -92,6 +92,7 @@ void OTProxyPluginMgr::initialize()
 		MediaSessionMgr::defaultsSetRtpSymetricEnabled(true);
 		MediaSessionMgr::defaultsSetIceEnabled(true);
 		MediaSessionMgr::defaultsSetIceStunEnabled(true);
+		MediaSessionMgr::defaultsSetIceTurnEnabled(false);
 
 		// enlarge AVPF tail to honor more RTCP-NACK requests
 		MediaSessionMgr::defaultsSetAvpfTail(200, 500);
