@@ -14,6 +14,8 @@
 
 #include "tnet_transport.h"
 
+#include "tsk_buffer.h"
+
 #include <map>
 #include <string>
 
