@@ -10,7 +10,8 @@ The notion of *pivot settings* is explained [Technical_Audio_mixer_design here].
 {{{
 audio-channels = 1
 audio-bits-per-sample = 16
-audio-sample-rate = 8000audio-ptime = 20
+audio-sample-rate = 8000
+audio-ptime = 20
 audio-volume = 1.0f
 audio-dim = 2d
 audio-max-latency = 200
