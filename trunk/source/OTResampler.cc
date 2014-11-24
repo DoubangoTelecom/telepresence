@@ -68,11 +68,11 @@ typedef struct ot_resampler_audio_ffmpeg_s
 ot_resampler_audio_ffmpeg_t;
 
 /* plugin: open() */
-static int ot_resampler_audio_ffmpeg_open(tmedia_resampler_t* self, uint32_t in_freq, uint32_t out_freq, uint32_t frame_duration, uint32_t in_channels, uint32_t out_channels, uint32_t quality)
+static int ot_resampler_audio_ffmpeg_open(tmedia_resampler_t* self, uint32_t in_freq, uint32_t out_freq, uint32_t frame_duration, uint32_t in_channels, uint32_t out_channels, uint32_t quality, uint32_t bits_per_sample)
 {
 	ot_resampler_audio_ffmpeg_t* _self = (ot_resampler_audio_ffmpeg_t*)self;
 	_self->oResampler = OTResamplerAudio::New(in_channels, out_channels,
-			OPENTELEPRESENCE_AUDIO_BITS_PER_SAMPLE_DEFAULT, OPENTELEPRESENCE_AUDIO_BITS_PER_SAMPLE_DEFAULT, // FIXME
+			bits_per_sample, OPENTELEPRESENCE_AUDIO_BITS_PER_SAMPLE_DEFAULT,
 			in_freq, out_freq,
 			frame_duration);
 	if(!_self->oResampler)
@@ -84,7 +84,7 @@ static int ot_resampler_audio_ffmpeg_open(tmedia_resampler_t* self, uint32_t in_
 }
 
 /* plugin: process() */
-static tsk_size_t ot_resampler_audio_ffmpeg_process(tmedia_resampler_t* self, const uint16_t* in_data, tsk_size_t in_size16, uint16_t* out_data, tsk_size_t out_size16)
+static tsk_size_t ot_resampler_audio_ffmpeg_process(tmedia_resampler_t* self, const void* in_data, tsk_size_t in_size16, void* out_data, tsk_size_t out_size16)
 {
 	ot_resampler_audio_ffmpeg_t* _self = (ot_resampler_audio_ffmpeg_t*)self;
 	if(!_self->oResampler)
@@ -92,7 +92,7 @@ static tsk_size_t ot_resampler_audio_ffmpeg_process(tmedia_resampler_t* self, co
 		OT_DEBUG_ERROR_EX(kOTMobuleNameFFmpegResampler, "Invalid state");
 		return -1;
 	}
-	return _self->oResampler->resample((const void*)in_data, (size_t)in_size16, (void*)out_data, (size_t)out_size16);
+	return _self->oResampler->resample(in_data, (size_t)in_size16, (void*)out_data, (size_t)out_size16);
 }
 /* plugin: close() */
 static int ot_resampler_audio_ffmpeg_close(tmedia_resampler_t* self)
