@@ -27,6 +27,7 @@ sudo yum install make libtool autoconf subversion git wget cmake gcc gcc-c++ pkg
 {{{
 git clone https://github.com/cisco/libsrtp/
 cd libsrtp
+git checkout v1.5.0
 CFLAGS="-fPIC" ./configure --enable-pic && make && make install
 }}}
 You should not use any libsrtp package because the latest dev version is required and building the source *by yourself is highly recommended*.
