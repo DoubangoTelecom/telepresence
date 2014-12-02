@@ -12,7 +12,7 @@ For any issue, please ask on the [https://groups.google.com/group/opentelepresen
 == Preparing the system==
 {{{
 sudo yum update
-sudo yum install make libtool autoconf subversion git wget cmake gcc gcc-c++ pkgconfig
+sudo yum install make libtool autoconf subversion git wget cmake gcc gcc-c++ pkgconfig nasm
 }}}
 
 ==Building thirdparties libraries==
