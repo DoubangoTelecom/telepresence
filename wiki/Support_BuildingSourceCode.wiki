@@ -215,6 +215,16 @@ make && make install
  * Remove _"--enable-nonfree"_ and _"--enable-libfaac"_ if you don’t want support for [http://en.wikipedia.org/wiki/Advanced_Audio_Coding AAC] audio codec.
  * Add _--enable-libx264 --enable-encoder=libx264 --enable-decoder=h264_ to force building with support for H.264.
 
+===Building `OpenH264`===
+*OpenH264* is optional. Adds support for *H.264* constrained baseline video codec.
+{{{
+git clone https://github.com/cisco/openh264.git
+cd openh264
+git checkout v1.1
+make ENABLE64BIT=Yes # Use ENABLE64BIT=No for 32bit platforms
+make install
+}}}
+
 ===Building OpenAL Soft===
 [http://kcat.strangesoft.net/openal.html OpenAL Soft] is optional. Adds support for Stereoscopic (spatial) 3D audio.
 {{{
