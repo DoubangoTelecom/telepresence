@@ -1,0 +1,5 @@
+The server supports two modes: **SA** (<u>s</u>tand-<u>a</u>lone) and **AS** (<u>a</u>pplication <u>s</u>erver). These modes are not exclusive and no special configuration is needed.
+
+The **SA** mode allows any SIP client to directly connect to the system without any intermediate node. If the client requires to be registered then, you can enable this option as explained [here](Configuration_SIP_registration.md) because the SIP registrar mode is OFF by default.
+
+The **AS** mode is useful if you already have your own SIP network/server and want to integrate the Telepresence system as an application server. This mode has been tested against [Asterisk](http://www.asterisk.org/), [reSIProcate](http://www.resiprocate.org/Main_Page), [openSIPS](http://www.opensips.org/) and [Kamailio](http://www.kamailio.org/w/). This is as easy as forwarding any INVITE (based on some criterias, e.g. _[name equal to @conf-call.org](domain.md)_) received by the SIP registrar to the Telepresence system.
