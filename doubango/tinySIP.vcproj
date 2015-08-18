@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\doubango\branches\2.0\Doubango\thirdparties\win32\include;..\..\doubango\branches\2.0\Doubango\tinySIP\include;..\..\doubango\branches\2.0\Doubango\tinySAK\src;..\..\doubango\branches\2.0\Doubango\tinyNET\src;..\..\doubango\branches\2.0\Doubango\tinyHTTP\include;..\..\doubango\branches\2.0\Doubango\tinySIGCOMP\src;..\..\doubango\branches\2.0\Doubango\tinyIPSec\src;..\..\doubango\branches\2.0\Doubango\tinySDP\include;..\..\doubango\branches\2.0\Doubango\tinyMEDIA\include"
+				AdditionalIncludeDirectories="..\..\doubango\thirdparties\win32\include;..\..\doubango\tinySIP\include;..\..\doubango\tinySAK\src;..\..\doubango\tinyNET\src;..\..\doubango\tinyHTTP\include;..\..\doubango\tinySIGCOMP\src;..\..\doubango\tinyIPSec\src;..\..\doubango\tinySDP\include;..\..\doubango\tinyMEDIA\include"
 				PreprocessorDefinitions="DEBUG_LEVEL=DEBUG_LEVEL_INFO;BODILESS_INVITE=0;WIN32;_DEBUG;_WINDOWS;_USRDLL;TINYSIP_EXPORTS;_WIN32_WINNT 0x0501"
 				MinimalRebuild="true"
 				RuntimeLibrary="3"
@@ -117,7 +117,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="false"
-				AdditionalIncludeDirectories="..\..\doubango\branches\2.0\Doubango\thirdparties\win32\include;..\..\doubango\branches\2.0\Doubango\tinySIP\include;..\..\doubango\branches\2.0\Doubango\tinySAK\src;..\..\doubango\branches\2.0\Doubango\tinyNET\src;..\..\doubango\branches\2.0\Doubango\tinyHTTP\include;..\..\doubango\branches\2.0\Doubango\tinySIGCOMP\src;..\..\doubango\branches\2.0\Doubango\tinyIPSec\src;..\..\doubango\branches\2.0\Doubango\tinySDP\include;..\..\doubango\branches\2.0\Doubango\tinyMEDIA\include"
+				AdditionalIncludeDirectories="..\..\doubango\thirdparties\win32\include;..\..\doubango\tinySIP\include;..\..\doubango\tinySAK\src;..\..\doubango\tinyNET\src;..\..\doubango\tinyHTTP\include;..\..\doubango\tinySIGCOMP\src;..\..\doubango\tinyIPSec\src;..\..\doubango\tinySDP\include;..\..\doubango\tinyMEDIA\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;TINYSIP_EXPORTS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="false"
@@ -178,410 +178,410 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\tsip.c"
+				RelativePath="..\..\doubango\tinySIP\src\tsip.c"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\tsip_action.c"
+				RelativePath="..\..\doubango\tinySIP\src\tsip_action.c"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\tsip_event.c"
+				RelativePath="..\..\doubango\tinySIP\src\tsip_event.c"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\tsip_message.c"
+				RelativePath="..\..\doubango\tinySIP\src\tsip_message.c"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\tsip_ssession.c"
+				RelativePath="..\..\doubango\tinySIP\src\tsip_ssession.c"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\tsip_timers.c"
+				RelativePath="..\..\doubango\tinySIP\src\tsip_timers.c"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\tsip_uri.c"
+				RelativePath="..\..\doubango\tinySIP\src\tsip_uri.c"
 				>
 			</File>
 			<Filter
 				Name="headers"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_accept.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_accept.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Accept_Contact.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Accept_Contact.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Accept_Encoding.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Accept_Encoding.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Accept_Language.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Accept_Language.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Accept_Resource_Priority.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Accept_Resource_Priority.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Alert_Info.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Alert_Info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Allow.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Allow.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Allow_Events.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Allow_Events.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Authentication_Info.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Authentication_Info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Authorization.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Authorization.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Call_ID.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Call_ID.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Call_Info.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Call_Info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Contact.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Contact.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Content_Disposition.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Content_Disposition.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Content_Encoding.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Content_Encoding.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Content_Language.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Content_Language.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Content_Length.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Content_Length.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Content_Type.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Content_Type.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_CSeq.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_CSeq.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Date.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Date.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Dummy.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Dummy.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Error_Info.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Error_Info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Event.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Event.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Expires.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Expires.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_From.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_From.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_History_Info.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_History_Info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Identity.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Identity.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Identity_Info.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Identity_Info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_In_Reply_To.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_In_Reply_To.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Join.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Join.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Max_Forwards.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Max_Forwards.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_MIME_Version.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_MIME_Version.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Min_Expires.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Min_Expires.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Min_SE.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Min_SE.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Organization.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Organization.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Access_Network_Info.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Access_Network_Info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Answer_State.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Answer_State.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Asserted_Identity.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Asserted_Identity.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Associated_URI.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Associated_URI.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Called_Party_ID.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Called_Party_ID.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Charging_Function_Addresses.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Charging_Function_Addresses.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Charging_Vector.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Charging_Vector.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_DCS_Billing_Info.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_DCS_Billing_Info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_DCS_LAES.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_DCS_LAES.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_DCS_OSPS.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_DCS_OSPS.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_DCS_Redirect.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_DCS_Redirect.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_DCS_Trace_Party_ID.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_DCS_Trace_Party_ID.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Early_Media.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Early_Media.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Media_Authorization.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Media_Authorization.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Preferred_Identity.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Preferred_Identity.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Profile_Key.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Profile_Key.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_User_Database.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_User_Database.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_P_Visited_Network_ID.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_P_Visited_Network_ID.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Path.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Path.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Priority.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Priority.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Privacy.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Privacy.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Proxy_Authenticate.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Proxy_Authenticate.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Proxy_Authorization.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Proxy_Authorization.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Proxy_Require.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Proxy_Require.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_RAck.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_RAck.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Reason.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Reason.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Record_Route.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Record_Route.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Refer_Sub.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Refer_Sub.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Refer_To.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Refer_To.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Referred_By.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Referred_By.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Reject_Contact.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Reject_Contact.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Replaces.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Replaces.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Reply_To.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Reply_To.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Request_Disposition.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Request_Disposition.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Require.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Require.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Resource_Priority.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Resource_Priority.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Retry_After.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Retry_After.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Route.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Route.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_RSeq.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_RSeq.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Security_Client.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Security_Client.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Security_Server.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Security_Server.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Security_Verify.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Security_Verify.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Server.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Server.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Service_Route.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Service_Route.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Session_Expires.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Session_Expires.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_SIP_ETag.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_SIP_ETag.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_SIP_If_Match.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_SIP_If_Match.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Subject.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Subject.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Subscription_State.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Subscription_State.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Supported.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Supported.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Target_Dialog.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Target_Dialog.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Timestamp.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Timestamp.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_To.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_To.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Unsupported.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Unsupported.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_User_Agent.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_User_Agent.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Via.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Via.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_Warning.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_Warning.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\headers\tsip_header_WWW_Authenticate.c"
+					RelativePath="..\..\doubango\tinySIP\src\headers\tsip_header_WWW_Authenticate.c"
 					>
 				</File>
 			</Filter>
@@ -589,15 +589,15 @@
 				Name="parsers"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\parsers\tsip_parser_header.c"
+					RelativePath="..\..\doubango\tinySIP\src\parsers\tsip_parser_header.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\parsers\tsip_parser_message.c"
+					RelativePath="..\..\doubango\tinySIP\src\parsers\tsip_parser_message.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\parsers\tsip_parser_uri.c"
+					RelativePath="..\..\doubango\tinySIP\src\parsers\tsip_parser_uri.c"
 					>
 				</File>
 			</Filter>
@@ -605,87 +605,87 @@
 				Name="dialogs"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\doubango\tinySIP\src\dialogs\tsip_dialog_info.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.cdiv.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.cdiv.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.client.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.client.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.conf.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.conf.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.ect.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.ect.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.hold.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.hold.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\doubango\tinySIP\src\dialogs\tsip_dialog_invite.ice.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.ice.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.qos.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.qos.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.server.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.server.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_invite.timers.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_invite.timers.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_layer.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_layer.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_message.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_message.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_options.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_options.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_publish.client.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_publish.client.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_register.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_register.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_register.client.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_register.client.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_register.server.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_register.server.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_subscribe.client.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_subscribe.client.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\dialogs\tsip_dialog_subscribe.server.c"
+					RelativePath="..\..\doubango\tinySIP\src\dialogs\tsip_dialog_subscribe.server.c"
 					>
 				</File>
 			</Filter>
@@ -693,15 +693,15 @@
 				Name="authentication"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\authentication\tsip_challenge.c"
+					RelativePath="..\..\doubango\tinySIP\src\authentication\tsip_challenge.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\authentication\tsip_milenage.c"
+					RelativePath="..\..\doubango\tinySIP\src\authentication\tsip_milenage.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\authentication\tsip_rijndael.c"
+					RelativePath="..\..\doubango\tinySIP\src\authentication\tsip_rijndael.c"
 					>
 				</File>
 			</Filter>
@@ -709,35 +709,35 @@
 				Name="api"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\api\tsip_api_common.c"
+					RelativePath="..\..\doubango\tinySIP\src\api\tsip_api_common.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\doubango\tinySIP\src\api\tsip_api_info.c"
+					RelativePath="..\..\doubango\tinySIP\src\api\tsip_api_info.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\api\tsip_api_invite.c"
+					RelativePath="..\..\doubango\tinySIP\src\api\tsip_api_invite.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\api\tsip_api_message.c"
+					RelativePath="..\..\doubango\tinySIP\src\api\tsip_api_message.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\api\tsip_api_options.c"
+					RelativePath="..\..\doubango\tinySIP\src\api\tsip_api_options.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\api\tsip_api_publish.c"
+					RelativePath="..\..\doubango\tinySIP\src\api\tsip_api_publish.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\api\tsip_api_register.c"
+					RelativePath="..\..\doubango\tinySIP\src\api\tsip_api_register.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\api\tsip_api_subscribe.c"
+					RelativePath="..\..\doubango\tinySIP\src\api\tsip_api_subscribe.c"
 					>
 				</File>
 			</Filter>
@@ -745,7 +745,7 @@
 				Name="sigcomp"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\sigcomp\tsip_sigcomp.c"
+					RelativePath="..\..\doubango\tinySIP\src\sigcomp\tsip_sigcomp.c"
 					>
 				</File>
 			</Filter>
@@ -753,27 +753,27 @@
 				Name="transactions"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transactions\tsip_transac.c"
+					RelativePath="..\..\doubango\tinySIP\src\transactions\tsip_transac.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transactions\tsip_transac_ict.c"
+					RelativePath="..\..\doubango\tinySIP\src\transactions\tsip_transac_ict.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transactions\tsip_transac_ist.c"
+					RelativePath="..\..\doubango\tinySIP\src\transactions\tsip_transac_ist.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transactions\tsip_transac_layer.c"
+					RelativePath="..\..\doubango\tinySIP\src\transactions\tsip_transac_layer.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transactions\tsip_transac_nict.c"
+					RelativePath="..\..\doubango\tinySIP\src\transactions\tsip_transac_nict.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transactions\tsip_transac_nist.c"
+					RelativePath="..\..\doubango\tinySIP\src\transactions\tsip_transac_nist.c"
 					>
 				</File>
 			</Filter>
@@ -781,19 +781,19 @@
 				Name="transports"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transports\tsip_transport.c"
+					RelativePath="..\..\doubango\tinySIP\src\transports\tsip_transport.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transports\tsip_transport_ipsec.c"
+					RelativePath="..\..\doubango\tinySIP\src\transports\tsip_transport_ipsec.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transports\tsip_transport_layer.c"
+					RelativePath="..\..\doubango\tinySIP\src\transports\tsip_transport_layer.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\src\transports\tsip_transport_tls.c"
+					RelativePath="..\..\doubango\tinySIP\src\transports\tsip_transport_tls.c"
 					>
 				</File>
 			</Filter>
@@ -804,426 +804,426 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip_config.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip_config.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tsip.h"
+				RelativePath="..\..\doubango\tinySIP\include\tsip.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\tsip_action.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip\tsip_action.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\tsip_event.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip\tsip_event.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\tsip_message.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip\tsip_message.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\tsip_message_common.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip\tsip_message_common.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\tsip_ssession.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip\tsip_ssession.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\tsip_timers.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip\tsip_timers.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\tsip_uri.h"
+				RelativePath="..\..\doubango\tinySIP\include\tinysip\tsip_uri.h"
 				>
 			</File>
 			<Filter
 				Name="headers"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_accept.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_accept.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Accept_Contact.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Accept_Contact.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Accept_Encoding.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Accept_Encoding.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Accept_Language.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Accept_Language.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Accept_Resource_Priority.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Accept_Resource_Priority.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Alert_Info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Alert_Info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Allow.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Allow.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Allow_Events.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Allow_Events.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Authentication_Info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Authentication_Info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Authorization.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Authorization.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Call_ID.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Call_ID.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Call_Info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Call_Info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Contact.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Contact.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Disposition.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Disposition.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Encoding.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Encoding.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Language.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Language.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Length.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Length.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Type.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Content_Type.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_CSeq.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_CSeq.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Date.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Date.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Dummy.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Dummy.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Error_Info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Error_Info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Event.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Event.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Expires.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Expires.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_From.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_From.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_History_Info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_History_Info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Identity.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Identity.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Identity_Info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Identity_Info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_In_Reply_To.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_In_Reply_To.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Join.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Join.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Max_Forwards.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Max_Forwards.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_MIME_Version.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_MIME_Version.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Min_Expires.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Min_Expires.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Min_SE.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Min_SE.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Organization.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Organization.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Access_Network_Info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Access_Network_Info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Answer_State.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Answer_State.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Asserted_Identity.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Asserted_Identity.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Associated_URI.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Associated_URI.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Called_Party_ID.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Called_Party_ID.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Charging_Function_Addresses.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Charging_Function_Addresses.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Charging_Vector.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Charging_Vector.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_Billing_Info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_Billing_Info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_LAES.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_LAES.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_OSPS.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_OSPS.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_Redirect.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_Redirect.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_Trace_Party_ID.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_DCS_Trace_Party_ID.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Early_Media.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Early_Media.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Media_Authorization.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Media_Authorization.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Preferred_Identity.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Preferred_Identity.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Profile_Key.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Profile_Key.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_User_Database.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_User_Database.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_P_Visited_Network_ID.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_P_Visited_Network_ID.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Path.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Path.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Priority.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Priority.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Privacy.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Privacy.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Proxy_Authenticate.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Proxy_Authenticate.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Proxy_Authorization.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Proxy_Authorization.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Proxy_Require.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Proxy_Require.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_RAck.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_RAck.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Reason.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Reason.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Record_Route.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Record_Route.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Refer_Sub.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Refer_Sub.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Refer_To.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Refer_To.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Referred_By.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Referred_By.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Reject_Contact.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Reject_Contact.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Replaces.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Replaces.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Reply_To.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Reply_To.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Request_Disposition.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Request_Disposition.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Require.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Require.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Resource_Priority.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Resource_Priority.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Retry_After.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Retry_After.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Route.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Route.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_RSeq.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_RSeq.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Security_Client.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Security_Client.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Security_Server.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Security_Server.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Security_Verify.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Security_Verify.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Server.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Server.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Service_Route.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Service_Route.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Session_Expires.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Session_Expires.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_SIP_ETag.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_SIP_ETag.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_SIP_If_Match.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_SIP_If_Match.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Subject.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Subject.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Subscription_State.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Subscription_State.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Supported.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Supported.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\..\..\doubango\branches\2.0\Doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Target_Dialog.h"
+					RelativePath="..\..\..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Target_Dialog.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Timestamp.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Timestamp.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_To.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_To.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Unsupported.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Unsupported.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_User_Agent.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_User_Agent.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Via.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Via.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_Warning.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_Warning.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_header_WWW_Authenticate.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_header_WWW_Authenticate.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\headers\tsip_headers.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\headers\tsip_headers.h"
 					>
 				</File>
 			</Filter>
@@ -1231,15 +1231,15 @@
 				Name="parsers"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\parsers\tsip_parser_header.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\parsers\tsip_parser_header.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\parsers\tsip_parser_message.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\parsers\tsip_parser_message.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\parsers\tsip_parser_uri.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\parsers\tsip_parser_uri.h"
 					>
 				</File>
 			</Filter>
@@ -1247,27 +1247,27 @@
 				Name="transactions"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transactions\tsip_transac.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transactions\tsip_transac.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transactions\tsip_transac_ict.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transactions\tsip_transac_ict.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transactions\tsip_transac_ist.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transactions\tsip_transac_ist.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transactions\tsip_transac_layer.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transactions\tsip_transac_layer.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transactions\tsip_transac_nict.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transactions\tsip_transac_nict.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transactions\tsip_transac_nist.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transactions\tsip_transac_nist.h"
 					>
 				</File>
 			</Filter>
@@ -1275,19 +1275,19 @@
 				Name="transports"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transports\tsip_transport.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transports\tsip_transport.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transports\tsip_transport_ipsec.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transports\tsip_transport_ipsec.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transports\tsip_transport_layer.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transports\tsip_transport_layer.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\transports\tsip_transport_tls.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\transports\tsip_transport_tls.h"
 					>
 				</File>
 			</Filter>
@@ -1295,47 +1295,47 @@
 				Name="dialogs"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_invite.common.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_invite.common.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_invite.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_invite.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_layer.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_layer.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_message.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_message.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_options.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_options.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_publish.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_publish.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_register.common.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_register.common.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_register.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_register.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_subscribe.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\dialogs\tsip_dialog_subscribe.h"
 					>
 				</File>
 			</Filter>
@@ -1343,15 +1343,15 @@
 				Name="authentication"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\authentication\tsip_challenge.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\authentication\tsip_challenge.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\authentication\tsip_milenage.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\authentication\tsip_milenage.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\authentication\tsip_rijndael.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\authentication\tsip_rijndael.h"
 					>
 				</File>
 			</Filter>
@@ -1359,35 +1359,35 @@
 				Name="api"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\api\tsip_api_common.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\api\tsip_api_common.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\doubango\tinySIP\include\tinysip\api\tsip_api_info.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\api\tsip_api_info.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\api\tsip_api_invite.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\api\tsip_api_invite.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\api\tsip_api_message.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\api\tsip_api_message.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\api\tsip_api_options.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\api\tsip_api_options.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\api\tsip_api_publish.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\api\tsip_api_publish.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\api\tsip_api_register.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\api\tsip_api_register.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\api\tsip_api_subscribe.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\api\tsip_api_subscribe.h"
 					>
 				</File>
 			</Filter>
@@ -1395,7 +1395,7 @@
 				Name="sigcomp"
 				>
 				<File
-					RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\include\tinysip\sigcomp\tsip_sigcomp.h"
+					RelativePath="..\..\doubango\tinySIP\include\tinysip\sigcomp\tsip_sigcomp.h"
 					>
 				</File>
 			</Filter>
@@ -1404,395 +1404,395 @@
 			Name="ragel(*.rl)"
 			>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_machine_header.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_machine_header.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_machine_message.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_machine_message.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_machine_utils.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_machine_utils.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Accept_Contact.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Accept_Contact.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Accept_Encoding.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Accept_Encoding.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Accept_Language.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Accept_Language.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Accept_Resource_Priority.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Accept_Resource_Priority.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Alert_Info.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Alert_Info.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Allow.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Allow.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Allow_Events.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Allow_Events.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Authentication_Info.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Authentication_Info.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Authorization.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Authorization.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Call_ID.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Call_ID.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Call_Info.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Call_Info.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Contact.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Contact.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Content_Disposition.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Content_Disposition.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Content_Encoding.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Content_Encoding.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Content_Language.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Content_Language.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Content_Length.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Content_Length.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Content_Type.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Content_Type.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_CSeq.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_CSeq.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Date.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Date.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Dummy.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Dummy.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Error_Info.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Error_Info.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Event.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Event.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Expires.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Expires.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_From.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_From.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_History_Info.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_History_Info.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Identity.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Identity.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Identity_Info.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Identity_Info.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_In_Reply_To.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_In_Reply_To.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Join.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Join.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Max_Forwards.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Max_Forwards.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_MIME_Version.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_MIME_Version.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Min_Expires.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Min_Expires.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Min_SE.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Min_SE.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Organization.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Organization.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Access_Network_Info.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Access_Network_Info.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Answer_State.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Answer_State.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Asserted_Identity.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Asserted_Identity.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Associated_URI.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Associated_URI.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Called_Party_ID.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Called_Party_ID.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Charging_Function_Addresses.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Charging_Function_Addresses.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Charging_Vector.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Charging_Vector.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_DCS_Billing_Info.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_DCS_Billing_Info.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_DCS_LAES.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_DCS_LAES.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_DCS_OSPS.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_DCS_OSPS.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_DCS_Redirect.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_DCS_Redirect.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_DCS_Trace_Party_ID.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_DCS_Trace_Party_ID.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Early_Media.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Early_Media.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Media_Authorization.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Media_Authorization.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Preferred_Identity.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Preferred_Identity.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Profile_Key.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Profile_Key.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_User_Database.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_User_Database.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_P_Visited_Network_ID.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_P_Visited_Network_ID.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Path.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Path.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Priority.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Priority.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Privacy.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Privacy.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Proxy_Authenticate.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Proxy_Authenticate.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Proxy_Authorization.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Proxy_Authorization.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Proxy_Require.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Proxy_Require.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_RAck.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_RAck.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Reason.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Reason.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Record_Route.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Record_Route.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Refer_Sub.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Refer_Sub.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Refer_To.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Refer_To.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Referred_By.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Referred_By.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Reject_Contact.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Reject_Contact.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Replaces.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Replaces.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Reply_To.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Reply_To.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Request_Disposition.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Request_Disposition.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Require.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Require.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Resource_Priority.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Resource_Priority.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Retry_After.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Retry_After.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Route.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Route.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_RSeq.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_RSeq.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Security_Client.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Security_Client.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Security_Server.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Security_Server.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Security_Verify.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Security_Verify.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Server.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Server.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Service_Route.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Service_Route.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Session_Expires.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Session_Expires.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_SIP_ETag.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_SIP_ETag.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_SIP_If_Match.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_SIP_If_Match.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Subject.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Subject.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Subscription_State.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Subscription_State.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Supported.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Supported.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Target_Dialog.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Target_Dialog.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Timestamp.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Timestamp.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_To.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_To.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Unsupported.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Unsupported.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_User_Agent.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_User_Agent.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Via.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Via.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_Warning.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_Warning.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_header_WWW_Authenticate.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_header_WWW_Authenticate.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_message.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_message.rl"
 				>
 			</File>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\ragel\tsip_parser_uri.rl"
+				RelativePath="..\..\doubango\tinySIP\ragel\tsip_parser_uri.rl"
 				>
 			</File>
 		</Filter>
@@ -1800,7 +1800,7 @@
 			Name="abnf(*.abnf)"
 			>
 			<File
-				RelativePath="..\..\doubango\branches\2.0\Doubango\tinySIP\abnf\core.abnf"
+				RelativePath="..\..\doubango\tinySIP\abnf\core.abnf"
 				>
 			</File>
 		</Filter>
