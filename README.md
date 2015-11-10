@@ -1,11 +1,11 @@
-Source code freely provided to you by <a href='http://www.doubango.org'> Doubango Telecom ®</a>. This is a good and viable **open source** alternative to Google Hangouts.
+Source code freely provided to you by <a href='https://www.doubango.org'> Doubango Telecom ®</a>. This is a good and viable **open source** alternative to Google Hangouts.
 
 
 
 <table>
 <tr>
 <td align='center'><a href='http://www.youtube.com/watch?feature=player_embedded&v=Yi3ufNso67U' target='_blank'><img src='http://img.youtube.com/vi/Yi3ufNso67U/0.jpg' width='425' height=344 /></a></td>
-<td align='center'><img src='https://telepresence.googlecode.com/svn/trunk/images/presentation_sharing.png' /></td>
+<td align='center'><img src='images/presentation_sharing.png' /></td>
 </tr>
 <tr>
 <td align='center'><i>Demonstration</i></td>
@@ -54,6 +54,6 @@ This short list is a good starting point to help you to understand what you coul
 Even if any SIP client could be used we highly recommend for this beta version to use our [WebRTC demo client](http://conf-call.org/) to ease debugging.
 
 ## Technical help ##
-Please check our [issue tracker](http://code.google.com/p/telepresence/issues/list) or [developer group](https://groups.google.com/group/opentelepresence) if you have any problem. <br />
+Please check our [issue tracker](https://github.com/DoubangoTelecom/telepresence/issues) or [developer group](https://groups.google.com/group/opentelepresence) if you have any problem. <br />
 We highly recommend reading our [Technical guide](http://conf-call.org/technical-guide.pdf?svn=2). <br />
 Please check the list of [known issues](Support_Known_issues.md) before reporting.
